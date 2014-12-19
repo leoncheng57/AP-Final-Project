@@ -1,8 +1,8 @@
 AP_Final_Project
 ================
 Pd 1
->My name
->Partner name
+Leon Cheng
+Kevin Mejia
 
 >What our project does
 >how to run it and use it
