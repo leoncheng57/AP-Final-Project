@@ -14,6 +14,6 @@ CHANGELOG
  - 12/19 - edited README.md
  - 12/21 - edited README.md
 
-NOTES TO GROUP
+*NOTES TO GROUP*
 ===============
  - Use Driver.java
