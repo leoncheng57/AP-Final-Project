@@ -13,3 +13,4 @@ CHANGELOG
  - 12/19 - created repo
  - 12/19 - edited README.md
  - 12/21 - edited README.md
+ - 12/21 - added NOTES.md
