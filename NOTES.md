@@ -1,8 +1,8 @@
 
 RESOURCES
 ==========
-https://www.youtube.com/watch?v=Yc8XezH669o
-https://www.processing.org/tutorials/
+ - https://www.youtube.com/watch?v=Yc8XezH669o
+ - https://www.processing.org/tutorials/
 
 Current Work
 ============
