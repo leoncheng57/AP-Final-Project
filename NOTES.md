@@ -18,10 +18,10 @@ RESOURCES
 
 TODO
 ============
- [] make a simple stag
- [] make simple enemies
- [] make simple towers
-  [] simple missiles
+ [ ] make a simple stag
+ [ ] make simple enemies
+ [ ] make simple towers
+  [ ] simple missiles
 
 
 Reminders
