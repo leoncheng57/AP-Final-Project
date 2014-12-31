@@ -35,14 +35,6 @@ RESOURCES
  - https://www.processing.org/tutorials/
  - http://www.openprocessing.org/
 
-TODO
-============
- - [ ] make a simple stage
- - [ ] make simple enemies
- - [ ] make simple towers
-  - [ ] simple missiles
-
-
 Reminders
 ========
  - use Driver.java
