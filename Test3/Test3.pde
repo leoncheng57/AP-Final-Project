@@ -1,34 +1,31 @@
-ArrayList<Thing> stills = new ArrayList<Thing>();
+ArrayList<Mon> mons = new ArrayList<Mon>();
 
 void setup() {
   size(500, 500);
   rectMode(CENTER);
-  ellipseMode(CENTER);
   //frameRate(10);
-  for (int i = 0; i<10; i++) {
-    Thing tmp = new Thing(random(width), random(height), 50, 50);
-    stills.add(tmp);
-  }
+  Mon m1 = new Mon();
+  m1.drawMe();
+  mons.add(m1);
 }
 
 void draw() {
   background(10);
-
-  Thing one = new Thing(width/2, height/2, 20, 20);
-  stills.add(one);
-
+  fill(255);
+  rect(width/2,height/2,width,50);
+  
   Thing two = new Thing(mouseX, mouseY, 20, 20);
   two.drawEllipse();
 
-  for (int i = 0; i<stills.size(); i++) {
-    stills.get(i).drawRect();
+  for (int i = 0; i<mons.size();i++){
+    mons.get(i).move();
   }
-
-  /*
-  if (frameCount / 10 == 10) {
-   println(stills);
-   exit();
-   }
-   */
+  
+  printData();
 }
 
+void printData(){
+  for (int i=0;i<mons.size();i++){
+    println(mons.get(i)); 
+  }
+}
