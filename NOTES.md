@@ -16,12 +16,12 @@ RESOURCES
  - https://www.processing.org/tutorials/
  - http://www.openprocessing.org/
 
-Current Work
+TODO
 ============
- - make a simple stage
- - make simple enemies
- - make simple towers
-  - simple missiles
+ [] make a simple stag
+ [] make simple enemies
+ [] make simple towers
+  [] simple missiles
 
 
 Reminders
