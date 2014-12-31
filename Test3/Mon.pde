@@ -10,7 +10,7 @@ class Mon {
 
   /*------------------CONSTRUCTORS---------------*/
   Mon(){ //create a default monster
-    xCor = 0;
+    xCor = width;
     yCor = height/2;
     col = #B70F0F;
     type = "defaultMon";
@@ -18,11 +18,11 @@ class Mon {
   
   void drawMe(){
     fill(col);
-    rect(xCor,yCor,25,25);
+    ellipse(xCor,yCor,25,25);
   }
   
-  void move(){ //IDEA: have a parameter to change speed 
-    xCor += 1;
+  void move(){ 
+    xCor -= 1;
     drawMe();
   }
 }
