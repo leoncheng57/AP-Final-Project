@@ -14,3 +14,5 @@ CHANGELOG
  - 12/19 - edited README.md
  - 12/21 - edited README.md
  - 12/21 - added NOTES.md
+ - 12/30 - edited NOTES.md
+ - 12/30 - added folder of Processing files
