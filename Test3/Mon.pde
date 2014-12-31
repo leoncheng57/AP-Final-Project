@@ -13,7 +13,7 @@ class Mon {
     xCor = 0;
     yCor = height/2;
     col = #B70F0F;
-    type = "default";
+    type = "defaultMon";
   }
   
   void drawMe(){

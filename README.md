@@ -15,3 +15,4 @@ CHANGELOG
  - 12/21 - added NOTES.md
  - 12/30 - edited NOTES.md
  - 12/30 - added folder of Processing files
+ - 12/30 - added a simple path and monster
