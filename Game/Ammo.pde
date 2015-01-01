@@ -1,3 +1,4 @@
+/*
 class Ammo extends Tower {
 
   String toString() {
@@ -22,4 +23,4 @@ class Ammo extends Tower {
     drawMe();
   }
 }
-
+*/

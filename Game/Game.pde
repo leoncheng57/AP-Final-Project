@@ -13,9 +13,17 @@ void setup() {
 
 void draw() {
   background(10);
-  fill(255);
-  rect(width/2, height/2, width, 50);
 
+  //Setup Stage
+  fill(#0E6414);
+  rect(width/2, 50, width, 100);
+  pushMatrix();
+  for (int i=0; i<4; i++) {
+    translate(0, 100);
+    rect(width/2, 50, width, 100);
+  }
+  popMatrix();
+  
   //create a sample ellipse that follows mouse
   Thing two = new Thing(mouseX, mouseY, 20, 20);
   two.drawEllipse();
@@ -27,8 +35,7 @@ void draw() {
 
   //draw towers
   for (int i =0; i<towers.size (); i++) {
-    towers.get(i).drawMe(); 
-    towers.get(i).shoot();
+    towers.get(i).drawMe();
   }
 
   printData();

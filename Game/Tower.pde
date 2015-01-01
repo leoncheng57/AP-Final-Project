@@ -23,10 +23,12 @@ class Tower {
     rect(xCor,yCor,25,25); 
   }
   
+  /*
   void shoot(){
      Ammo a = new Ammo();
      a.shoot();
   }
+  */
   
 }
 
