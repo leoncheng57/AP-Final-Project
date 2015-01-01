@@ -9,7 +9,8 @@ void setup() {
   size(500, 500);
   rectMode(CENTER);
 
-  //create a sample monster
+  //create a sample monster 
+  //IDEA: Make a method or class that has prepared sets of monsters to send out
   Mon m1 = new Mon();
   m1.drawMe();
   mons.add(m1);
@@ -20,7 +21,7 @@ void draw() {
 
   //Setup Stage
   fill(#0E6414);
-  rect(width/2, 50, width, 100);
+  rect(width/2, 50, width, 100); //IDEA: get a pic of a strip of grass to insert instead of green rects
   pushMatrix();
   for (int i=0; i<4; i++) {
     translate(0, 100);
@@ -51,6 +52,7 @@ void draw() {
       ammos.add(a);
     }
   }
+  
   //shoot the ammo
   for (int i =0; i<ammos.size (); i++) {
     ammos.get(i).shoot();
@@ -69,6 +71,7 @@ void printData() {
 }
 
 void mousePressed() {
+  //add a tower at the position where the mouse is pressed
   Tower tmp = new Tower();
   towers.add(tmp);
 }
