@@ -1,6 +1,3 @@
-import java.util.*;
-import java.io.*;
-
 class Thing{
   float xCor, yCor, wdh, hgt;
   String shapeType; 

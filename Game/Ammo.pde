@@ -1,5 +1,7 @@
-/*
-class Ammo extends Tower {
+class Ammo {
+  float xCor, yCor;
+  String type;
+  color col;
 
   String toString() {
     String[] a = {
@@ -8,19 +10,22 @@ class Ammo extends Tower {
     return Arrays.toString(a);
   }
 
-  Ammo() { //create a default ammo
-    col = #FFF300;
+  /*------------------CONSTRUCTORS---------------*/
+  Ammo(float a, float b) { //create a default ammo with (a,b)=(towerXCor,towerYCor)
+    xCor = a;
+    yCor = b;
+    col = #FA0B03;
     type = "defaultAmmo";
   }
 
-  void drawMe() {
-    fill(col);
-    ellipse(xCor, yCor, 25, 25);
-  }
+ void drawMe(){
+   fill(col);
+   ellipse(xCor,yCor,20,10); 
+ }
+ 
+ void shoot(){
+   xCor += 1;
+   drawMe();
+ }
 
-  void shoot() {
-    xCor--;
-    drawMe();
-  }
 }
-*/

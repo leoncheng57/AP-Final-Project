@@ -22,7 +22,7 @@ class Mon {
   }
   
   void move(){ 
-    xCor -= 1;
+    xCor -= 0.5;
     drawMe();
   }
 }
