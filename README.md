@@ -36,6 +36,10 @@ RESOURCES
  - https://www.processing.org/tutorials/
  - http://www.openprocessing.org/
 
+Issues
+=======
+ - Need to make instance vars private?
+
 Reminders
 ========
  - use Driver.java
