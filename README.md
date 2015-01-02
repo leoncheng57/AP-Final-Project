@@ -19,6 +19,7 @@ CHANGELOG
  - 12/31 - worked on the stage
  - 12/31 - made ammo/missiles
  - 1/2 - worked on setting up buttons
+ - 1/2 - added a way to kill monsters
 
 Ideas
 =====
@@ -30,7 +31,6 @@ Ideas
  - stages
   - diff paths
  - ***MAKE A GAME LIKE PLANTS VS ZOMBIES (will be easier than a game like bloons tower defense)***
- - ***USE PROCESSING***
 
 RESOURCES
 ==========

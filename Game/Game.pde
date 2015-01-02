@@ -8,18 +8,26 @@ ArrayList<Ammo> ammos = new ArrayList<Ammo>();
 void setup() {
   size(500, 500);
   rectMode(CENTER);
+  monsPack1();
+}
 
-  //create a sample monster 
-  //IDEA: Make a method or class that has prepared sets of monsters to send out
+void monsPack1() {
   Mon m1 = new Mon();
   m1.drawMe();
   mons.add(m1);
 }
 
 void draw() {
-  background(10);
+  makeStage();
+  moveMons();
+  drawTowers();
+  makeAmmo();
+  shootAmmo();
+  printData();
+  hitMon();
+}
 
-  //Setup Stage
+void makeStage() {
   fill(#0E6414);
   rect(width/2, 50, width, 100); //IDEA: get a pic of a strip of grass to insert instead of green rects
   pushMatrix();
@@ -28,23 +36,30 @@ void draw() {
     rect(width/2, 50, width, 100);
   }
   popMatrix();
+}
 
-  //create a sample ellipse that follows mouse
-  fill(#FAA505);
-  Thing two = new Thing(mouseX, mouseY, 20, 20);
-  two.drawEllipse();
+void printData() {
+  if (frameCount % 60 == 0) {
+    for (int i=0; i<mons.size (); i++) {
+      println(mons.get(i));
+    }
+  }
+}
 
-  //have the monsters move left along the path
+void moveMons() {
   for (int i = 0; i<mons.size (); i++) {
     mons.get(i).move();
   }
+}
 
-  //draw towers
+void drawTowers() {
   for (int i =0; i<towers.size (); i++) {
     towers.get(i).drawMe();
   }
+}
 
-  //create ammo every 60 frames
+//create ammo every 60 frames
+void makeAmmo() {
   for (int i =0; i<towers.size (); i++) {
     if (frameCount % 60 == 0) {
       Tower t = towers.get(i);
@@ -52,20 +67,25 @@ void draw() {
       ammos.add(a);
     }
   }
-  
-  //shoot the ammo
+}
+
+void shootAmmo() {
   for (int i =0; i<ammos.size (); i++) {
     ammos.get(i).shoot();
   }
-
-  printData();
 }
 
-
-void printData() {
-  if (frameCount % 60 == 0) {
-    for (int i=0; i<mons.size (); i++) {
-      println(mons.get(i));
+//sees if the ammo hit the Mon
+void hitMon() {
+  float range = 10; //this will be the range of the ammo (how far from mon to be accepted as a hit)
+  for (Ammo a : ammos) {
+    for (Mon m : mons) {
+      if (abs(a.xCor - m.xCor) < range  && abs(a.yCor - m.yCor) < range) {
+        println("HIT!!");
+        fill(#D809D5);
+        rect(a.xCor,a.yCor,range*2,range*2); //allows develops to see the range of the ammo
+        m.die();
+      }
     }
   }
 }
