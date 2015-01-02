@@ -16,9 +16,10 @@ CHANGELOG
  - 12/30 - edited NOTES.md
  - 12/30 - added folder of Processing files
  - 12/30 - added a simple path and monster
+ - 12/30 - added Towers
  - 12/31 - worked on the stage
- - 12/31 - made ammo/missiles
- - 1/2 - worked on setting up buttons
+ - 12/31 - added ammo/missiles
+ - 1/2 - tested out setting up buttons
  - 1/2 - added a way to kill monsters
 
 Ideas
