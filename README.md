@@ -18,6 +18,7 @@ CHANGELOG
  - 12/30 - added a simple path and monster
  - 12/31 - worked on the stage
  - 12/31 - made ammo/missiles
+ - 1/2 - worked on setting up buttons
 
 Ideas
 =====
