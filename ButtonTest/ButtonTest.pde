@@ -3,7 +3,7 @@
  press mouse - color changes to gray
  release mouse over same square - color changes to blue
  mouse mouse and release over another sqaure - color changes back to white
- GLITCH = a button can be returned to its original color 
+ ISSUE = a button can be returned to its original color even after turning blue 
  ISSUE = buttons arent being stored in the array
  */
 
