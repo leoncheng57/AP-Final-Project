@@ -2,24 +2,24 @@ import java.util.*;
 import java.io.*;
 
 Cell[][] Grid = new Cell[20][13];
-int setWidth = 640; //manually set here
-int setHeight = (int)(setWidth * 0.8);
-int cellSize = setWidth / 20;
+int setWidth = 800; //manually set here
+int setHeight = 500;
+int cellSize = setHeight / 5;
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
 
 void setup() {
-  size(640, 512);
+  size(setWidth, setHeight);
   rectMode(CENTER);
   makeGrid();
   monsPack1();
 }
 
 void makeGrid() {
-  for (int x = 0; x<Grid.length; x++) {
-    for (int y = 0; y<Grid[0].length; y++) {
-      Grid[x][y] = new Cell(x, y);
+  for (int col = 0; col<Grid.length; col++) {
+    for (int row = 0; row<Grid[0].length; row++) {
+      Grid[col][row] = new Cell(col, row);
     }
   }
 }
@@ -42,13 +42,6 @@ void draw() {
 }
 
 void drawOutline() {
-  /*
-  int x = (int)(mouseX / cellSize);
-   int y = (int)(mouseY / cellSize);
-   if (x < Grid.length && y < Grid[0].length) {
-   Grid[x][y].outlineMe();
-   }
-   */
   if (mouseX >0 && mouseY > 0 && mouseX < width && mouseY <height) {
     int x = mouseX / cellSize;
     int y = mouseY / cellSize;

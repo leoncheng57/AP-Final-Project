@@ -12,9 +12,9 @@ class Tower {
 
   /*------------------CONSTRUCTORS---------------*/
   Tower() { //create a default tower
-    xCor = mouseX;
-    yCor = mouseY;
-    col = #000EFF;
+    xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
+    yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
+    col = #31A512;
     type = "defaultTower";
   }
   

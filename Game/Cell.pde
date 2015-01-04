@@ -1,19 +1,20 @@
 class Cell{
-  int x;
-  int y;
+  int col, row;
   //below 2 lines may be incorporated later
   //boolean isPath = false;
   //Tower occcupant = null;
   
   Cell(int a, int b){
-    x = a;
-    y = b; 
+    col = a;
+    row = b; 
   }
   
   void outlineMe(){
     noFill();
     stroke(#00FF00);
-    rect(x * cellSize, y * cellSize, cellSize, cellSize); 
+    rectMode(CORNER);
+    rect(col * cellSize, row * cellSize, cellSize, cellSize); 
+    rectMode(CENTER);
     stroke(0);
   }
 }
