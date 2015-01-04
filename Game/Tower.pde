@@ -20,7 +20,7 @@ class Tower {
   
   void drawMe(){
     fill(col);
-    rect(xCor,yCor,25,25); 
+    rect(xCor,yCor,cellSize,cellSize); 
   }
   
   /*

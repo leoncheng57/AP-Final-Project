@@ -1,14 +1,27 @@
 import java.util.*;
 import java.io.*;
 
+Cell[][] Grid = new Cell[20][13];
+int setWidth = 640; //manually set here
+int setHeight = (int)(setWidth * 0.8);
+int cellSize = setWidth / 20;
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
 
 void setup() {
-  size(1000, 500);
+  size(640, 512);
   rectMode(CENTER);
+  makeGrid();
   monsPack1();
+}
+
+void makeGrid() {
+  for (int x = 0; x<Grid.length; x++) {
+    for (int y = 0; y<Grid[0].length; y++) {
+      Grid[x][y] = new Cell(x, y);
+    }
+  }
 }
 
 void monsPack1() {
@@ -18,7 +31,8 @@ void monsPack1() {
 }
 
 void draw() {
-  makeStage();
+  background(#C9C3C3);
+  drawOutline();
   moveMons();
   drawTowers();
   makeAmmo();
@@ -27,15 +41,19 @@ void draw() {
   hitMon();
 }
 
-void makeStage() {
-  fill(#0E6414);
-  rect(width/2, 50, width, 100); //IDEA: get a pic of a strip of grass to insert instead of green rects
-  pushMatrix();
-  for (int i=0; i<4; i++) {
-    translate(0, 100);
-    rect(width/2, 50, width, 100);
+void drawOutline() {
+  /*
+  int x = (int)(mouseX / cellSize);
+   int y = (int)(mouseY / cellSize);
+   if (x < Grid.length && y < Grid[0].length) {
+   Grid[x][y].outlineMe();
+   }
+   */
+  if (mouseX >0 && mouseY > 0 && mouseX < width && mouseY <height) {
+    int x = mouseX / cellSize;
+    int y = mouseY / cellSize;
+    Grid[x][y].outlineMe();
   }
-  popMatrix();
 }
 
 void printData() {
@@ -83,7 +101,7 @@ void hitMon() {
       if (abs(a.xCor - m.xCor) < range  && abs(a.yCor - m.yCor) < range) {
         println("HIT!!");
         fill(#D809D5);
-        rect(a.xCor,a.yCor,range*2,range*2); //allows develops to see the range of the ammo
+        rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
         m.die();
       }
     }
