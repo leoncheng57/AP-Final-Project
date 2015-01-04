@@ -6,7 +6,7 @@ ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
 
 void setup() {
-  size(500, 500);
+  size(1000, 500);
   rectMode(CENTER);
   monsPack1();
 }
