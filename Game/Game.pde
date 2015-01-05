@@ -4,7 +4,9 @@ import java.io.*;
 Cell[][] Grid = new Cell[20][13];
 int setWidth = 800; //manually set here
 int setHeight = 500;
-int cellSize = setHeight / 5;
+int numCellsHeight = 5;
+int cellSize = setHeight / numCellsHeight;
+
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
@@ -36,6 +38,9 @@ void monsPack2() {
     m.drawMe();
     mons.add(m);
   }
+//  for(Mon m : mons) {
+//   if (m.yCo 
+//  }
 }
 
 void draw() {
@@ -47,7 +52,9 @@ void draw() {
   printData();
   moveMons();
   hitMon();
+  graveDigger();
   loseGame();
+
 }
 
 void drawOutline() {
@@ -89,7 +96,14 @@ void shootAmmo() {
   }
 }
 
-
+void graveDigger() {
+  for (int i = 0; i < mons.size (); i++) {
+    if (mons.get(i).alive == false) {
+      mons.remove(i);
+      println("monster removed");
+    }
+  }
+}
 void moveMons() {
   for (int i = 0; i<mons.size (); i++) {
     mons.get(i).move();
@@ -97,14 +111,14 @@ void moveMons() {
 }
 
 //IDEA: make an lose screen that stays there instead of exiting right away
-void loseGame(){ 
-  for (Mon m : mons){
-    if (m.xCor<0){
+void loseGame() { 
+  for (Mon m : mons) {
+    if (m.xCor<0) {
       background(0);
       println("YOU LOSE THE GAME!");
-      exit(); 
+      noLoop();
     }
-  } 
+  }
 }
 
 //sees if the ammo hit the Mon

@@ -1,4 +1,5 @@
 class Mon {
+ 
   float xCor, yCor;
   String type;
   color col;
@@ -13,8 +14,9 @@ class Mon {
 
   /*------------------CONSTRUCTORS---------------*/
   Mon() { //create a default monster
+   Random rnd = new Random();
     xCor = width;
-    yCor = height/2;
+    yCor = (rnd.nextInt(numCellsHeight) * cellSize) + (cellSize / 2);
     col = #B70F0F;
     type = "defaultMon";
     alive = true;
@@ -37,7 +39,7 @@ class Mon {
     fill(#A2A2A7);
     rect(xCor,yCor,25,25);
     //ISSUE: this seems like  a crude/bad way to remove/kill the mon/object
-    xCor = -1;
+    
   }
 
 }
