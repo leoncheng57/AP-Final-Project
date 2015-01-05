@@ -27,7 +27,7 @@ class Mon {
 
   void move() { 
     if (alive) {
-      xCor -= 0.5;
+      xCor -= 2;
       drawMe();
     }
   }

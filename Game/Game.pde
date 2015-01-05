@@ -47,6 +47,7 @@ void draw() {
   printData();
   moveMons();
   hitMon();
+  loseGame();
 }
 
 void drawOutline() {
@@ -62,12 +63,6 @@ void printData() {
     for (int i=0; i<mons.size (); i++) {
       println(mons.get(i));
     }
-  }
-}
-
-void moveMons() {
-  for (int i = 0; i<mons.size (); i++) {
-    mons.get(i).move();
   }
 }
 
@@ -92,6 +87,24 @@ void shootAmmo() {
   for (int i =0; i<ammos.size (); i++) {
     ammos.get(i).shoot();
   }
+}
+
+
+void moveMons() {
+  for (int i = 0; i<mons.size (); i++) {
+    mons.get(i).move();
+  }
+}
+
+//IDEA: make an lose screen that stays there instead of exiting right away
+void loseGame(){ 
+  for (Mon m : mons){
+    if (m.xCor<0){
+      background(0);
+      println("YOU LOSE THE GAME!");
+      exit(); 
+    }
+  } 
 }
 
 //sees if the ammo hit the Mon
