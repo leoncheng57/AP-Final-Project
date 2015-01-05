@@ -13,7 +13,7 @@ void setup() {
   size(setWidth, setHeight);
   rectMode(CENTER);
   makeGrid();
-  monsPack1();
+  monsPack2();
 }
 
 void makeGrid() {
@@ -30,14 +30,22 @@ void monsPack1() {
   mons.add(m1);
 }
 
+void monsPack2() {
+  for (int i=0; i<5; i++) {
+    Mon m = new Mon();
+    m.drawMe();
+    mons.add(m);
+  }
+}
+
 void draw() {
-  background(#C9C3C3);
+  background(#012489);
   drawOutline();
-  moveMons();
   drawTowers();
   makeAmmo();
   shootAmmo();
   printData();
+  moveMons();
   hitMon();
 }
 
