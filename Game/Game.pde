@@ -20,7 +20,6 @@ void setup() {
   rectMode(CENTER);
   makeFont();
   makeGrid();
-  monsPack2();
 }
 
 void makeFont() {
@@ -39,38 +38,20 @@ void makeGrid() {
 }
 
 
-//ISSUE: Mons packs should probably be in the draw fxn and activated by a "timer"
-void monsPack1() {
-  Mon m1 = new Mon();
-  m1.drawMe();
-  mons.add(m1);
-}
-
-void monsPack2() {
-  for (int i=0; i<5; i++) {
-    Mon m = new Mon();
-    m.drawMe();
-    mons.add(m);
-  }
-  //Began working on a way to prevent overlapping of mons
-  //  for(Mon m : mons) {
-  //   if (m.yCo 
-  //  }
-}
-
 void draw() {
   background(#012489);
   drawOutline();
   drawTowers();
   makeAmmo();
   shootAmmo();
-  printData();
+  //printData();
   moveMons();
   hitMon();
   graveDigger();
   drawMsgBox();
   drawText();
   loseGame();
+  monsPack1Draw();
 }
 
 
@@ -157,16 +138,18 @@ void loseGame() {
   }
 }
 
-//sees if the ammo hit the Mon
+//sees if the ammo hit the Mon, and remoevs the Ammo from arraylist ammos
 void hitMon() {
   float range = 10; //this will be the range of the ammo (how far from mon to be accepted as a hit)
-  for (Ammo a : ammos) {
-    for (Mon m : mons) {
+  for (Mon m : mons) {
+    for (int i = 0; i<ammos.size (); i++) {
+      Ammo a = ammos.get(i); 
       if (abs(a.xCor - m.xCor) < range  && abs(a.yCor - m.yCor) < range) {
         println("HIT!!");
         fill(#D809D5);
         rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
-        m.die();
+        m.hit();
+      ammos.remove(i);
       }
     }
   }
@@ -178,5 +161,40 @@ void mousePressed() {
     Tower tmp = new Tower();
     towers.add(tmp);
   }
+}
+
+
+//ISSUE: something wrong with if statement
+void monsPack1Draw(){
+  if (abs(2*frameRate-frameCount)<17)  {
+    monsPack1();
+  } 
+  println(frameCount);
+}
+
+
+int roundFrame(int n){
+  println((n/10)*10);
+  return (n/10)*10;
+
+}
+  
+//ISSUE: Mons packs should probably be in the draw fxn and activated by a "timer"
+void monsPack1() {
+  Mon m1 = new Mon();
+  m1.drawMe();
+  mons.add(m1);
+}
+
+void monsPack2() {
+  for (int i=0; i<5; i++) {
+    Mon m = new Mon();
+    m.drawMe();
+    mons.add(m);
+  }
+  //Began working on a way to prevent overlapping of mons
+  //  for(Mon m : mons) {
+  //   if (m.yCo 
+  //  }
 }
 

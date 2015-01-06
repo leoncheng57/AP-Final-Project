@@ -1,9 +1,10 @@
 class Mon {
- 
+
   float xCor, yCor;
   String type;
   color col;
   boolean alive;
+  int health;
 
   String toString() {
     String[] a = {
@@ -14,12 +15,13 @@ class Mon {
 
   /*------------------CONSTRUCTORS---------------*/
   Mon() { //create a default monster
-   Random rnd = new Random();
+    Random rnd = new Random();
     xCor = width;
     yCor = (rnd.nextInt(numCellsCol) * cellSize) + (cellSize / 2);
     col = #B70F0F;
     type = "defaultMon";
     alive = true;
+    health = 20;
   } 
 
   void drawMe() {
@@ -34,12 +36,14 @@ class Mon {
     }
   }
 
-  void die(){
-    alive = false; 
-    fill(#A2A2A7);
-    rect(xCor,yCor,25,25);
-    //ISSUE: this seems like  a crude/bad way to remove/kill the mon/object
-    
-  }
+  void hit() {
+    health = health - 10;
 
+    if (health <= 0 ) { 
+      alive = false; 
+      fill(#A2A2A7);
+      rect(xCor, yCor, 25, 25);
+    }
+  }
 }
+

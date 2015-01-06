@@ -1,0 +1,344 @@
+
+import javax.swing.JFrame;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.geom.Ellipse2D;
+
+import javax.swing.JPanel;
+public class Driver extends Jpanel {
+    public void examplePaint(Graphics g) {
+	Graphics2D fillerOfShapes = (Graphics2D)g;
+	fillerOfShapes.setColor(Color.RED);
+	fillerOfShapes.drawOval( 100, 100 , 10 , 10);
+	fillerOfShapes.fillOval(1,1, 15 , 5);
+	    
+    }
+
+    
+	publame and draw to the screen how to restart the game.
+
+Download the game source code at the bottom of this page so you could check it while reading this. Also the source code is commented, so read the comments.
+Game classes
+
+This game has five classes \u2013 four from game framework and one additional \u2013 Window.java, Canvas.java, Framework.java, Game.java and Duck.java.
+Window.java
+
+In this class I set up game title to be \u201cShoot the duck\u201d and that game will be in full screen mode.
+Canvas.java
+
+In this class I set up that mouse cursor disappear because we will draw shotgun sight.
+Framework.java
+
+Like in previous tutorial we have in this class main menu image that we draw when we are in \u201cMAIN_MENU\u201d state of the game. When we are in this game state we also draw to the screen some text (how to start the game, \u2026).
+Like I said it before the game starts when player clicks left mouse button. So let\u2019s take a look at mouseClicked(MouseEvent e) method. So this method is called every time that mouse button is clicked and we check in it if left mouse button is clicked when we are in \u201cMAIN_MENU\u201d state. If it was clicked, then we call newGame() method.
+In keyReleasedFramework(KeyEvent e) method I put code that checks if ESC key was released when we are in \u201cGAMEOVER\u201d, \u201cPLAYING\u201d or \u201cMAIN_MENU\u201d state and if it was, then we close the game. In this method in \u201cGAMEOVER\u201d state I also checks if space or enter key was released and if it was, then we restart the game.
+Game.java
+
+In this class we have few variables for recording the statistics and few for images. An important variable is array list ducks. In this variable we will save all ducks that we create.
+Let\u2019s take a look at UpdateGame(long gameTime, Point mousePosition) method. In this method we create a new ducks, if it's the time, and add them to the array list. We also update all this ducks \u2013 we move them and check if are still on the screen. Then we check if player shoots and if he is, then we check if he is hit some. Last thing that we do here, is to check how many ducks run away and change game state to \u201cGAMEOVER\u201d if necessary. When we create a duck, we create it with parameters for line on which we are adding a duck. Lines and its properties are specified in Ducks.java class in table duckLines. When we create a new duck you can see that we add to x coordinate of a duck random number between 0 and 200. We do that so that the distance between ducks isn\u2019t always the same.
+
+	ducks.add(new Duck(
+	Duck.duckLines[Duck.nextDuckLines][0] + random.nextInt(200), 
+	Duck.duckLines[Duck.nextDuckLines][1], 
+	Duck.duckLines[Duck.nextDuckLines][2], 
+	Duck.duckLines[Duck.nextDuckLines][3], duckImg));
+	
+
+When a player shoots and we go through all ducks with for loop to check if player hit some, we check if duck was hit into head or into body.
+
+	if(new Rectangle(ducks.get(i).x + 18, ducks.get(i).y
+	                 , 27, 30).contains(mousePosition) ||
+	   new Rectangle(ducks.get(i).x + 30, ducks.get(i).y + 30
+	                 , 88, 25).contains(mousePosition))
+	
+
+If we draw rectangles with those properties above we can see hit area. Put code below into Draw(Graphics2D g2d, Point mousePosition) method into for loop where we draw all the ducks and you will see.
+
+	g2d.drawRect(ducks.get(i).x + 18, ducks.get(i).y     , 27, 30);
+	g2d.drawRect(ducks.get(i).x + 30, ducks.get(i).y + 30, 88, 25);
+	
+
+Duck.java
+
+In this clic static void main(String[] args) {
+		JFrame frame = new JFrame("Tower Defence");
+		frame.add(new Driver());
+ame and draw to the screen how to restart the game.
+
+Download the game source code at the bottom of this page so you could check it while reading this. Also the source code is commented, so read the comments.
+Game classes
+
+This game has five classes \u2013 four from game framework and one additional \u2013 Window.java, Canvas.java, Framework.java, Game.java and Duck.java.
+Window.java
+
+In this class I set up game title to be \u201cShoot the duck\u201d and that game will be in full screen mode.
+Canvas.java
+
+In this class I set up that mouse cursor disappear because we will draw shotgun sight.
+Framework.java
+
+Like in previous tutorial we have in this class main menu image that we draw when we are in \u201cMAIN_MENU\u201d state of the game. When we are in this game state we also draw to the screen some text (how to start the game, \u2026).
+Like I said it before the game starts when player clicks left mouse button. So let\u2019s take a look at mouseClicked(MouseEvent e) method. So this method is called every time that mouse button is clicked and we check in it if left mouse button is clicked when we are in \u201cMAIN_MENU\u201d state. If it was clicked, then we call newGame() method.
+In keyReleasedFramework(KeyEvent e) method I put code that checks if ESC key was released when we are in \u201cGAMEOVER\u201d, \u201cPLAYING\u201d or \u201cMAIN_MENU\u201d state and if it was, then we close the game. In this method in \u201cGAMEOVER\u201d state I also checks if space or enter key was released and if it was, then we restart the game.
+Game.java
+
+In this class we have few variables for recording the statistics and few for images. An important variable is array list ducks. In this variable we will save all ducks that we create.
+Let\u2019s take a look at UpdateGame(long gameTime, Point mousePosition) method. In this method we create a new ducks, if it's the time, and add them to the array list. We also update all this ducks \u2013 we move them and check if are still on the screen. Then we check if player shoots and if he is, then we check if he is hit some. Last thing that we do here, is to check how many ducks run away and change game state to \u201cGAMEOVER\u201d if necessary. When we create a duck, we create it with parameters for line on which we are adding a duck. Lines and its properties are specified in Ducks.java class in table duckLines. When we create a new duck you can see that we add to x coordinate of a duck random number between 0 and 200. We do that so that the distance between ducks isn\u2019t always the same.
+
+	ducks.add(new Duck(
+	Duck.duckLines[Duck.nextDuckLines][0] + random.nextInt(200), 
+	Duck.duckLines[Duck.nextDuckLines][1], 
+	Duck.duckLines[Duck.nextDuckLines][2], 
+	Duck.duckLines[Duck.nextDuckLines][3], duckImg));
+	
+
+When a player shoots and we go through all ducks with for loop to check if player hit some, we check if duck was hit into head or into body.
+
+	if(new Rectangle(ducks.get(i).x + 18, ducks.get(i).y
+	                 , 27, 30).contains(mousePosition) ||
+	   new Rectangle(ducks.get(i).x + 30, ducks.get(i).y + 30
+	                 , 88, 25).contains(mousePosition))
+	
+
+If we draw rectangles with those properties above we can see hit area. Put code below into Draw(Graphics2D g2d, Point mousePosition) method into for loop where we draw all the ducks and you will see.
+
+	g2d.drawRect(ducks.get(i).x + 18, ducks.get(i).y     , 27, 30);
+	g2d.drawRect(ducks.get(i).x + 30, ducks.get(i).y + 30, 88, 25);
+	
+
+Duck.java
+
+In this cl		frame.setSize(900, 900);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ame and draw to the screen how to restart the game.
+
+Download the game source code at the bottom of this page so you could check it while reading this. Also the source code is commented, so read the comments.
+Game classes
+
+This game has five classes \u2013 four from game framework and one additional \u2013 Window.java, Canvas.java, Framework.java, Game.java and Duck.java.
+Window.java
+
+In this class I set up game title to be \u201cShoot the duck\u201d and that game will be in full screen mode.
+Canvas.java
+
+In this class I set up that mouse cursor disappear because we will draw shotgun sight.
+Framework.java
+
+Like in previous tutorial we have in this class main menu image that we draw when we are in \u201cMAIN_MENU\u201d state of the game. When we are in this game state we also draw to the screen some text (how to start the game, \u2026).
+Like I said it before the game starts when player clicks left mouse button. So let\u2019s take a look at mouseClicked(MouseEvent e) method. So this method is called every time that mouse button is clicked and we check in it if left mouse button is clicked when we are in \u201cMAIN_MENU\u201d state. If it was clicked, then we call newGame() method.
+In keyReleasedFramework(KeyEvent e) method I put code that checks if ESC key was released when we are in \u201cGAMEOVER\u201d, \u201cPLAYING\u201d or \u201cMAIN_MENU\u201d state and if it was, then we close the game. In this method in \u201cGAMEOVER\u201d state I also checks if space or enter key was released and if it was, then we restart the game.
+Game.java
+
+In this class we have few variables for recording the statistics and few for images. An important variable is array list ducks. In this variable we will save all ducks that we create.
+Let\u2019s take a look at UpdateGame(long gameTime, Point mousePosition) method. In this method we create a new ducks, if it's the time, and add them to the array list. We also update all this ducks \u2013 we move them and check if are still on the screen. Then we check if player shoots and if he is, then we check if he is hit some. Last thing that we do here, is to check how many ducks run away and change game state to \u201cGAMEOVER\u201d if necessary. When we create a duck, we create it with parameters for line on which we are adding a duck. Lines and its properties are specified in Ducks.java class in table duckLines. When we create a new duck you can see that we add to x coordinate of a duck random number between 0 and 200. We do that so that the distance between ducks isn\u2019t always the same.
+
+	ducks.add(new Duck(
+	Duck.duckLines[Duck.nextDuckLines][0] + random.nextInt(200), 
+	Duck.duckLines[Duck.nextDuckLines][1], 
+	Duck.duckLines[Duck.nextDuckLines][2], 
+	Duck.duckLines[Duck.nextDuckLines][3], duckImg));
+	
+
+When a player shoots and we go through all ducks with for loop to check if player hit some, we check if duck was hit into head or into body.
+
+	if(new Rectangle(ducks.get(i).x + 18, ducks.get(i).y
+	                 , 27, 30).contains(mousePosition) ||
+	   new Rectangle(ducks.get(i).x + 30, ducks.get(i).y + 30
+	                 , 88, 25).contains(mousePosition))
+	
+
+If we draw rectangles with those properties above we can see hit area. Put code below into Draw(Graphics2D g2d, Point mousePosition) method into for loop where we draw all the ducks and you will see.
+
+	g2d.drawRect(ducks.get(i).x + 18, ducks.get(i).y     , 27, 30);
+	g2d.drawRect(ducks.get(i).x + 30, ducks.get(i).y + 30, 88, 25);
+	
+
+Duck.java
+
+In this cl	}
+}
+ame and draw to the screen how to restart the game.
+
+Download the game source code at the bottom of this page so you could check it while reading this. Also the source code is commented, so read the comments.
+Game classes
+
+This game has five classes \u2013 four from game framework and one additional \u2013 Window.java, Canvas.java, Framework.java, Game.java and Duck.java.
+Window.java
+
+In this class I set up game title to be \u201cShoot the duck\u201d and that game will be in full screen mode.
+Canvas.java
+
+In this class I set up that mouse cursor disappear because we will draw shotgun sight.
+Framework.java
+
+Like in previous tutorial we have in this class main menu image that we draw when we are in \u201cMAIN_MENU\u201d state of the game. When we are in this game state we also draw to the screen some text (how to start the game, \u2026).
+Like I said it before the game starts when player clicks left mouse button. So let\u2019s take a look at mouseClicked(MouseEvent e) method. So this method is called every time that mouse button is clicked and we check in it if left mouse button is clicked when we are in \u201cMAIN_MENU\u201d state. If it was clicked, then we call newGame() method.
+In keyReleasedFramework(KeyEvent e) method I put code that checks if ESC key was released when we are in \u201cGAMEOVER\u201d, \u201cPLAYING\u201d or \u201cMAIN_MENU\u201d state and if it was, then we close the game. In this method in \u201cGAMEOVER\u201d state I also checks if space or enter key was released and if it was, then we restart the game.
+Game.java
+
+In this class we have few variables for recording the statistics and few for images. An important variable is array list ducks. In this variable we will save all ducks that we create.
+Let\u2019s take a look at UpdateGame(long gameTime, Point mousePosition) method. In this method we create a new ducks, if it's the time, and add them to the array list. We also update all this ducks \u2013 we move them and check if are still on the screen. Then we check if player shoots and if he is, then we check if he is hit some. Last thing that we do here, is to check how many ducks run away and change game state to \u201cGAMEOVER\u201d if necessary. When we create a duck, we create it with parameters for line on which we are adding a duck. Lines and its properties are specified in Ducks.java class in table duckLines. When we create a new duck you can see that we add to x coordinate of a duck random number between 0 and 200. We do that so that the distance between ducks isn\u2019t always the same.
+
+	ducks.add(new Duck(
+	Duck.duckLines[Duck.nextDuckLines][0] + random.nextInt(200), 
+	Duck.duckLines[Duck.nextDuckLines][1], 
+	Duck.duckLines[Duck.nextDuckLines][2], 
+	Duck.duckLines[Duck.nextDuckLines][3], duckImg));
+	
+
+When a player shoots and we go through all ducks with for loop to check if player hit some, we check if duck was hit into head or into body.
+
+	if(new Rectangle(ducks.get(i).x + 18, ducks.get(i).y
+	                 , 27, 30).contains(mousePosition) ||
+	   new Rectangle(ducks.get(i).x + 30, ducks.get(i).y + 30
+	                 , 88, 25).contains(mousePosition))
+	
+
+If we draw rectangles with those properties above we can see hit area. Put code below into Draw(Graphics2D g2d, Point mousePosition) method into for loop where we draw all the ducks and you will see.
+
+	g2d.drawRect(ducks.get(i).x + 18, ducks.get(i).y     , 27, 30);
+	g2d.drawRect(ducks.get(i).x + 30, ducks.get(i).y + 30, 88, 25);
+	
+
+Duck.java
+
+In this clame and draw to the screen how to restart the game.
+
+Download the game source code at the bottom of this page so you could check it while reading this. Also the source code is commented, so read the comments.
+Game classes
+
+This game has five classes \u2013 four from game framework and one additional \u2013 Window.java, Canvas.java, Framework.java, Game.java and Duck.java.
+Window.java
+
+In this class I set up game title to be \u201cShoot the duck\u201d and that game will be in full screen mode.
+Canvas.java
+
+In this class I set up that mouse cursor disappear because we will draw shotgun sight.
+Framework.java
+
+Like in previous tutorial we have in this class main menu image that we draw when we are in \u201cMAIN_MENU\u201d state of the game. When we are in this game state we also draw to the screen some text (how to start the game, \u2026).
+Like I said it before the game starts when player clicks left mouse button. So let\u2019s take a look at mouseClicked(MouseEvent e) method. So this method is called every time that mouse button is clicked and we check in it if left mouse button is clicked when we are in \u201cMAIN_MENU\u201d state. If it was clicked, then we call newGame() method.
+In keyReleasedFramework(KeyEvent e) method I put code that checks if ESC key was released when we are in \u201cGAMEOVER\u201d, \u201cPLAYING\u201d or \u201cMAIN_MENU\u201d state and if it was, then we close the game. In this method in \u201cGAMEOVER\u201d state I also checks if space or enter key was released and if it was, then we restart the game.
+Game.java
+
+In this class we have few variables for recording the statistics and few for images. An important variable is array list ducks. In this variable we will save all ducks that we create.
+Let\u2019s take a look at UpdateGame(long gameTime, Point mousePosition) method. In this method we create a new ducks, if it's the time, and add them to the array list. We also update all this ducks \u2013 we move them and check if are still on the screen. Then we check if player shoots and if he is, then we check if he is hit some. Last thing that we do here, is to check how many ducks run away and change game state to \u201cGAMEOVER\u201d if necessary. When we create a duck, we create it with parameters for line on which we are adding a duck. Lines and its properties are specified in Ducks.java class in table duckLines. When we create a new duck you can see that we add to x coordinate of a duck random number between 0 and 200. We do that so that the distance between ducks isn\u2019t always the same.
+
+	ducks.add(new Duck(
+	Duck.duckLines[Duck.nextDuckLines][0] + random.nextInt(200), 
+	Duck.duckLines[Duck.nextDuckLines][1], 
+	Duck.duckLines[Duck.nextDuckLines][2], 
+	Duck.duckLines[Duck.nextDuckLines][3], duckImg));
+	
+
+When a player shoots and we go through all ducks with for loop to check if player hit some, we check if duck was hit into head or into body.
+
+	if(new Rectangle(ducks.get(i).x + 18, ducks.get(i).y
+	                 , 27, 30).contains(mousePosition) ||
+	   new Rectangle(ducks.get(i).x + 30, ducks.get(i).y + 30
+	                 , 88, 25).contains(mousePosition))
+	
+
+If we draw rectangles with those properties above we can see hit area. Put code below into Draw(Graphics2D g2d, Point mousePosition) method into for loop where we draw all the ducks and you will see.
+
+	g2d.drawRect(ducks.get(i).x + 18, ducks.get(i).y     , 27, 30);
+	g2d.drawRect(ducks.get(i).x + 30, ducks.get(i).y + 30, 88, 25);
+	
+
+Duck.java
+
+In this clame and draw to the screen how to restart the game.
+
+Download the game source code at the bottom of this page so you could check it while reading this. Also the source code is commented, so read the comments.
+Game classes
+
+This game has five classes \u2013 four from game framework and one additional \u2013 Window.java, Canvas.java, Framework.java, Game.java and Duck.java.
+Window.java
+
+In this class I set up game title to be \u201cShoot the duck\u201d and that game will be in full screen mode.
+Canvas.java
+
+In this class I set up that mouse cursor disappear because we will draw shotgun sight.
+Framework.java
+
+Like in previous tutorial we have in this class main menu image that we draw when we are in \u201cMAIN_MENU\u201d state of the game. When we are in this game state we also draw to the screen some text (how to start the game, \u2026).
+Like I said it before the game starts when player clicks left mouse button. So let\u2019s take a look at mouseClicked(MouseEvent e) method. So this method is called every time that mouse button is clicked and we check in it if left mouse button is clicked when we are in \u201cMAIN_MENU\u201d state. If it was clicked, then we call newGame() method.
+In keyReleasedFramework(KeyEvent e) method I put code that checks if ESC key was released when we are in \u201cGAMEOVER\u201d, \u201cPLAYING\u201d or \u201cMAIN_MENU\u201d state and if it was, then we close the game. In this method in \u201cGAMEOVER\u201d state I also checks if space or enter key was released and if it was, then we restart the game.
+Game.java
+
+In this class we have few variables for recording the statistics and few for images. An important variable is array list ducks. In this variable we will save all ducks that we create.
+Let\u2019s take a look at UpdateGame(long gameTime, Point mousePosition) method. In this method we create a new ducks, if it's the time, and add them to the array list. We also update all this ducks \u2013 we move them and check if are still on the screen. Then we check if player shoots and if he is, then we check if he is hit some. Last thing that we do here, is to check how many ducks run away and change game state to \u201cGAMEOVER\u201d if necessary. When we create a duck, we create it with parameters for line on which we are adding a duck. Lines and its properties are specified in Ducks.java class in table duckLines. When we create a new duck you can see that we add to x coordinate of a duck random number between 0 and 200. We do that so that the distance between ducks isn\u2019t always the same.
+
+	ducks.add(new Duck(
+	Duck.duckLines[Duck.nextDuckLines][0] + random.nextInt(200), 
+	Duck.duckLines[Duck.nextDuckLines][1], 
+	Duck.duckLines[Duck.nextDuckLines][2], 
+	Duck.duckLines[Duck.nextDuckLines][3], duckImg));
+	
+
+When a player shoots and we go through all ducks with for loop to check if player hit some, we check if duck was hit into head or into body.
+
+	if(new Rectangle(ducks.get(i).x + 18, ducks.get(i).y
+	                 , 27, 30).contains(mousePosition) ||
+	   new Rectangle(ducks.get(i).x + 30, ducks.get(i).y + 30
+	                 , 88, 25).contains(mousePosition))
+	
+
+If we draw rectangles with those properties above we can see hit area. Put code below into Draw(Graphics2D g2d, Point mousePosition) method into for loop where we draw all the ducks and you will see.
+
+	g2d.drawRect(ducks.get(i).x + 18, ducks.get(i).y     , 27, 30);
+	g2d.drawRect(ducks.get(i).x + 30, ducks.get(i).y + 30, 88, 25);
+	
+
+Duck.java
+
+In this clame and draw to the screen how to restart the game.
+
+Download the game source code at the bottom of this page so you could check it while reading this. Also the source code is commented, so read the comments.
+Game classes
+
+This game has five classes \u2013 four from game framework and one additional \u2013 Window.java, Canvas.java, Framework.java, Game.java and Duck.java.
+Window.java
+
+In this class I set up game title to be \u201cShoot the duck\u201d and that game will be in full screen mode.
+Canvas.java
+
+In this class I set up that mouse cursor disappear because we will draw shotgun sight.
+Framework.java
+
+Like in previous tutorial we have in this class main menu image that we draw when we are in \u201cMAIN_MENU\u201d state of the game. When we are in this game state we also draw to the screen some text (how to start the game, \u2026).
+Like I said it before the game starts when player clicks left mouse button. So let\u2019s take a look at mouseClicked(MouseEvent e) method. So this method is called every time that mouse button is clicked and we check in it if left mouse button is clicked when we are in \u201cMAIN_MENU\u201d state. If it was clicked, then we call newGame() method.
+In keyReleasedFramework(KeyEvent e) method I put code that checks if ESC key was released when we are in \u201cGAMEOVER\u201d, \u201cPLAYING\u201d or \u201cMAIN_MENU\u201d state and if it was, then we close the game. In this method in \u201cGAMEOVER\u201d state I also checks if space or enter key was released and if it was, then we restart the game.
+Game.java
+
+In this class we have few variables for recording the statistics and few for images. An important variable is array list ducks. In this variable we will save all ducks that we create.
+Let\u2019s take a look at UpdateGame(long gameTime, Point mousePosition) method. In this method we create a new ducks, if it's the time, and add them to the array list. We also update all this ducks \u2013 we move them and check if are still on the screen. Then we check if player shoots and if he is, then we check if he is hit some. Last thing that we do here, is to check how many ducks run away and change game state to \u201cGAMEOVER\u201d if necessary. When we create a duck, we create it with parameters for line on which we are adding a duck. Lines and its properties are specified in Ducks.java class in table duckLines. When we create a new duck you can see that we add to x coordinate of a duck random number between 0 and 200. We do that so that the distance between ducks isn\u2019t always the same.
+
+	ducks.add(new Duck(
+	Duck.duckLines[Duck.nextDuckLines][0] + random.nextInt(200), 
+	Duck.duckLines[Duck.nextDuckLines][1], 
+	Duck.duckLines[Duck.nextDuckLines][2], 
+	Duck.duckLines[Duck.nextDuckLines][3], duckImg));
+	
+
+When a player shoots and we go through all ducks with for loop to check if player hit some, we check if duck was hit into head or into body.
+
+	if(new Rectangle(ducks.get(i).x + 18, ducks.get(i).y
+	                 , 27, 30).contains(mousePosition) ||
+	   new Rectangle(ducks.get(i).x + 30, ducks.get(i).y + 30
+	                 , 88, 25).contains(mousePosition))
+	
+
+If we draw rectangles with those properties above we can see hit area. Put code below into Draw(Graphics2D g2d, Point mousePosition) method into for loop where we draw all the ducks and you will see.
+
+	g2d.drawRect(ducks.get(i).x + 18, ducks.get(i).y     , 27, 30);
+	g2d.drawRect(ducks.get(i).x + 30, ducks.get(i).y + 30, 88, 25);
+	
+
+Duck.java
+
+In this cl
