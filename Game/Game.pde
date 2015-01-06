@@ -1,22 +1,33 @@
 import java.util.*;
 import java.io.*;
 
-int setWidth = 850; 
-int setHeight = 550;
+int setWidth = 800; 
+int setHeight = 600;
 int numCellsCol = 5; 
 int numCellsRow = 6;
 int cellSize = 100;
+PFont f;
 
 Cell[][] Grid = new Cell[numCellsRow][numCellsCol];
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
+ArrayList<Text> texts = new ArrayList<Text>();
+
 
 void setup() {
   size(setWidth, setHeight);
   rectMode(CENTER);
+  makeFont();
   makeGrid();
   monsPack2();
+}
+
+void makeFont() {
+  f = createFont("Arial", 16);
+  //  see the fonts already installed onto the system
+  //  String[] fontList = PFont.list();
+  //  println(fontList);
 }
 
 void makeGrid() {
@@ -41,6 +52,7 @@ void monsPack2() {
     m.drawMe();
     mons.add(m);
   }
+  //Began working on a way to prevent overlapping of mons
   //  for(Mon m : mons) {
   //   if (m.yCo 
   //  }
@@ -56,7 +68,23 @@ void draw() {
   moveMons();
   hitMon();
   graveDigger();
+  drawMsgBox();
+  drawText();
   loseGame();
+}
+
+
+void drawText() {
+  for (Text t : texts) {
+    t.drawMe();
+  }
+}
+
+void drawMsgBox() {
+  rectMode(CORNER);
+  fill(0);
+  rect(0, cellSize*numCellsCol, width, height-cellSize*numCellsCol);
+  rectMode(CENTER);
 }
 
 void drawOutline() {
@@ -67,6 +95,7 @@ void drawOutline() {
   }
 }
 
+//ISSUE: this method doesn't have a great purpose
 void printData() {
   if (frameCount % 60 == 0) {
     for (int i=0; i<mons.size (); i++) {
@@ -102,8 +131,11 @@ void shootAmmo() {
 void graveDigger() {
   for (int i = 0; i < mons.size (); i++) {
     if (mons.get(i).alive == false) {
+      println("monster removed!");
+      Text t = new Text("monster removed!");
+      texts.add(t);
       mons.remove(i);
-      println("monster removed");
+      i--;
     }
   }
 }

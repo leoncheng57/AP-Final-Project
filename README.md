@@ -24,6 +24,7 @@ CHANGELOG
  - 1/4 - added a grid to the background
  - 1/5 - added a way to lose and exit
  - 1/5 - improved the grid by making its sizes more easily customizable
+ - 1/5 - added a message box
 
 Ideas
 =====
