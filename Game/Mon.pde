@@ -16,7 +16,7 @@ class Mon {
   Mon() { //create a default monster
    Random rnd = new Random();
     xCor = width;
-    yCor = (rnd.nextInt(numCellsHeight) * cellSize) + (cellSize / 2);
+    yCor = (rnd.nextInt(numCellsCol) * cellSize) + (cellSize / 2);
     col = #B70F0F;
     type = "defaultMon";
     alive = true;

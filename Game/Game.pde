@@ -1,12 +1,13 @@
 import java.util.*;
 import java.io.*;
 
-Cell[][] Grid = new Cell[20][13];
-int setWidth = 800; //manually set here
-int setHeight = 500;
-int numCellsHeight = 5;
-int cellSize = setHeight / numCellsHeight;
+int setWidth = 850; 
+int setHeight = 550;
+int numCellsCol = 5; 
+int numCellsRow = 6;
+int cellSize = 100;
 
+Cell[][] Grid = new Cell[numCellsRow][numCellsCol];
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
@@ -26,6 +27,8 @@ void makeGrid() {
   }
 }
 
+
+//ISSUE: Mons packs should probably be in the draw fxn and activated by a "timer"
 void monsPack1() {
   Mon m1 = new Mon();
   m1.drawMe();
@@ -38,9 +41,9 @@ void monsPack2() {
     m.drawMe();
     mons.add(m);
   }
-//  for(Mon m : mons) {
-//   if (m.yCo 
-//  }
+  //  for(Mon m : mons) {
+  //   if (m.yCo 
+  //  }
 }
 
 void draw() {
@@ -54,11 +57,10 @@ void draw() {
   hitMon();
   graveDigger();
   loseGame();
-
 }
 
 void drawOutline() {
-  if (mouseX >0 && mouseY > 0 && mouseX < width && mouseY <height) {
+  if (mouseX >0 && mouseY > 0 && mouseX < cellSize*Grid.length && mouseY < cellSize*Grid[0].length) {
     int x = mouseX / cellSize;
     int y = mouseY / cellSize;
     Grid[x][y].outlineMe();
@@ -96,6 +98,7 @@ void shootAmmo() {
   }
 }
 
+//removes dead mons from the arraylist mons
 void graveDigger() {
   for (int i = 0; i < mons.size (); i++) {
     if (mons.get(i).alive == false) {
@@ -104,6 +107,7 @@ void graveDigger() {
     }
   }
 }
+
 void moveMons() {
   for (int i = 0; i<mons.size (); i++) {
     mons.get(i).move();
@@ -138,7 +142,9 @@ void hitMon() {
 
 void mousePressed() {
   //add a tower at the position where the mouse is pressed
-  Tower tmp = new Tower();
-  towers.add(tmp);
+  if (mouseX < cellSize*Grid.length && mouseY < cellSize*Grid[0].length) {
+    Tower tmp = new Tower();
+    towers.add(tmp);
+  }
 }
 
