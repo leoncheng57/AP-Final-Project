@@ -7,6 +7,7 @@ int numCellsCol = 5;
 int numCellsRow = 6;
 int cellSize = 100;
 PFont f;
+int initFrameRate = (int)frameRate;
 
 Cell[][] Grid = new Cell[numCellsRow][numCellsCol];
 ArrayList<Mon> mons = new ArrayList<Mon>();
@@ -169,17 +170,9 @@ void monsPack1Draw() {
   //if (abs(2*frameRate-frameCount)<17) {
   // monsPack1();
   //} 
-  if (60 == frameCount) {
+  if (2*(int)initFrameRate == frameCount) { //ISSUE: good idea to use initFrameRate?
     monsPack1();
   }
-  println(frameCount);
-  println(frameRate);
-}
-
-
-int roundFrame(int n) {
-  println((n/10)*10);
-  return (n/10)*10;
 }
 
 //ISSUE: Mons packs should probably be in the draw fxn and activated by a "timer"
