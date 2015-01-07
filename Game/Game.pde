@@ -7,7 +7,7 @@ int numCellsCol = 5;
 int numCellsRow = 6;
 int cellSize = 100;
 PFont f;
-int initFrameRate = (int)frameRate;
+int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second for some reason
 
 Cell[][] Grid = new Cell[numCellsRow][numCellsCol];
 ArrayList<Mon> mons = new ArrayList<Mon>();
@@ -52,7 +52,9 @@ void draw() {
   drawMsgBox();
   drawText();
   loseGame();
-  monsPack1Draw();
+  //monsPack1();
+  //  monsPack2();
+  monsPack3();
 }
 
 
@@ -165,32 +167,62 @@ void mousePressed() {
 }
 
 
-//ISSUE: something wrong with if statement
-void monsPack1Draw() {
-  //if (abs(2*frameRate-frameCount)<17) {
-  // monsPack1();
-  //} 
-  if (2*(int)initFrameRate == frameCount) { //ISSUE: good idea to use initFrameRate?
-    monsPack1();
+void monsPack1() { 
+  if (2*initFrameRate == frameCount) { //ISSUE: good idea to use initFrameRate?
+    Mon m1 = new Mon();
+    m1.drawMe();
+    mons.add(m1);
   }
 }
 
-//ISSUE: Mons packs should probably be in the draw fxn and activated by a "timer"
-void monsPack1() {
-  Mon m1 = new Mon();
-  m1.drawMe();
-  mons.add(m1);
-}
 
+//ISSUE: needs fixing
 void monsPack2() {
-  for (int i=0; i<5; i++) {
-    Mon m = new Mon();
-    m.drawMe();
-    mons.add(m);
-  }
+  float delay =  0.5;
+  float releaseTime = 1;
+  if (3*initFrameRate == frameCount) {
+    Mon m1 = new Mon();
+    m1.drawMe();
+    mons.add(m1);
+  } 
+  if (5*initFrameRate == frameCount) {
+    Mon m1 = new Mon();
+    m1.drawMe();
+    mons.add(m1);
+  } 
+  if (8*initFrameRate == frameCount) {
+    Mon m1 = new Mon();
+    m1.drawMe();
+    mons.add(m1);
+  } 
+
+
+
+  /*  
+   for (int i=0; i<5; i++) {
+   if (releaseTime == frameCount) {
+   Mon m = new Mon();
+   m.drawMe();
+   mons.add(m);
+   println(releaseTime);
+   }
+   releaseTime+=delay;
+   //    println("frameC: "+frameCount);      
+   }
+   println(frameCount);
+   */
+
   //Began working on a way to prevent overlapping of mons
   //  for(Mon m : mons) {
   //   if (m.yCo 
   //  }
+}
+
+void monsPack3() {
+  if (2*initFrameRate == frameCount) {
+    Tank t1 = new Tank();
+    t1.drawMe();
+    mons.add(t1);
+  }
 }
 

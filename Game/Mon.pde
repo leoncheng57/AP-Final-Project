@@ -41,8 +41,7 @@ class Mon {
 
     if (health <= 0 ) { 
       alive = false; 
-      fill(#A2A2A7);
-      rect(xCor, yCor, 25, 25);
+
     }
   }
 }
