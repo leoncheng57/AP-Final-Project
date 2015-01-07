@@ -149,7 +149,7 @@ void hitMon() {
         fill(#D809D5);
         rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
         m.hit();
-      ammos.remove(i);
+        ammos.remove(i);
       }
     }
   }
@@ -165,20 +165,23 @@ void mousePressed() {
 
 
 //ISSUE: something wrong with if statement
-void monsPack1Draw(){
-  if (abs(2*frameRate-frameCount)<17)  {
+void monsPack1Draw() {
+  //if (abs(2*frameRate-frameCount)<17) {
+  // monsPack1();
+  //} 
+  if (60 == frameCount) {
     monsPack1();
-  } 
+  }
   println(frameCount);
+  println(frameRate);
 }
 
 
-int roundFrame(int n){
+int roundFrame(int n) {
   println((n/10)*10);
   return (n/10)*10;
-
 }
-  
+
 //ISSUE: Mons packs should probably be in the draw fxn and activated by a "timer"
 void monsPack1() {
   Mon m1 = new Mon();
