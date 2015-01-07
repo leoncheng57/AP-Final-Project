@@ -25,7 +25,7 @@ CHANGELOG
  - 1/5 - added a way to lose and exit
  - 1/5 - improved the grid by making its sizes more easily customizable
  - 1/5 - added a message box
-
+ - 1/6 - monster's and ammo's movements were tweaked, health was introduced 
 Ideas
 =====
  - enemies
