@@ -1,10 +1,10 @@
 class Mon {
 
-  float xCor, yCor;
+  float xCor, yCor, health;
   String type;
   color col;
   boolean alive;
-  int health;
+  
 
   String toString() {
     String[] a = {
@@ -36,8 +36,9 @@ class Mon {
     }
   }
 
-  void hit() {
-    health = health - 10;
+  void hit(float atk) {
+    
+    health = health - atk;
 
     if (health <= 0 ) { 
       alive = false; 

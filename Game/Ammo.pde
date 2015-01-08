@@ -1,8 +1,8 @@
 class Ammo {
-  float xCor, yCor;
+  float xCor, yCor , atk;
   String type;
   color col;
-
+  
   String toString() {
     String[] a = {
       "x: "+xCor, "y: "+yCor, "type: "+type
@@ -16,15 +16,16 @@ class Ammo {
     yCor = b;
     col = #FA0B03;
     type = "defaultAmmo";
+    atk  = 10;//subj to change
   }
 
  void drawMe(){
    fill(col);
-   ellipse(xCor,yCor,20,10); 
+   ellipse(xCor,yCor,20,10); //shape of ammo 
  }
  
  void shoot(){
-   xCor += 1;
+   xCor += 1;//speed
    drawMe();
  }
 

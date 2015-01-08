@@ -151,7 +151,7 @@ void hitMon() {
         println("HIT!!");
         fill(#D809D5);
         rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
-        m.hit();
+        m.hit(a.atk);
         ammos.remove(i);
       }
     }

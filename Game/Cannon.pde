@@ -1,4 +1,4 @@
-class Tower {
+class Cannon extends Tower {
   float xCor, yCor;
   String type;
   color col;
@@ -15,7 +15,7 @@ class Tower {
     xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
     yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
     col = #31A512;
-    type = "defaultTower";
+    type = "Cannon";
   }
   
   
@@ -27,4 +27,5 @@ class Tower {
 
   
 }
-
+ 
+ 

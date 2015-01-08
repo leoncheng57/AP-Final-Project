@@ -16,12 +16,5 @@ class Tank extends Mon {
       drawMe();
     }
   }
-  void hit() {
-    health = health - 10;
-
-    if (health <= 0 ) { 
-      alive = false;
-    }
-  }
 }
 
