@@ -28,6 +28,8 @@ CHANGELOG
  - 1/6 - improved monster's and ammo's movements, 
  - 1/6 - added monster health 
  - 1/7 - added timing for monster packs
+ - 1/7 - created different character type 
+ - 1/8 - created different ammo type
 
 Ideas
 =====
