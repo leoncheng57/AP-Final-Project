@@ -9,12 +9,12 @@ int cellSize = 100;
 PFont f;
 int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second for some reason
 
+
 Cell[][] Grid = new Cell[numCellsRow][numCellsCol];
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
-ArrayList<Text> texts = new ArrayList<Text>();
-
+String msg = "";
 
 void setup() {
   size(setWidth, setHeight);
@@ -59,9 +59,10 @@ void draw() {
 
 
 void drawText() {
-  for (Text t : texts) {
-    t.drawMe();
-  }
+  textFont(f, 16);
+  fill(255);
+  text(msg, 0, cellSize*numCellsCol + 16);
+  println(msg);
 }
 
 void drawMsgBox() {
@@ -99,8 +100,7 @@ void makeAmmo() {
   for (int i =0; i<towers.size (); i++) {
     if (frameCount % 60 == 0) {
       Tower t = towers.get(i);
-      Ammo a = new Ammo(t.xCor, t.yCor); //make get functions the x and y coors
-      ammos.add(a);
+      ammos.add(t.createAmmo());
     }
   }
 }
@@ -116,8 +116,7 @@ void graveDigger() {
   for (int i = 0; i < mons.size (); i++) {
     if (mons.get(i).alive == false) {
       println("monster removed!");
-      Text t = new Text("monster removed!");
-      texts.add(t);
+      msg = "monster removed!";
       mons.remove(i);
       i--;
     }
@@ -158,11 +157,20 @@ void hitMon() {
   }
 }
 
+
+//creates specfic towers
+//press a key to specify the type
 void mousePressed() {
   //add a tower at the position where the mouse is pressed
   if (mouseX < cellSize*Grid.length && mouseY < cellSize*Grid[0].length) {
-    Tower tmp = new Tower();
-    towers.add(tmp);
+    if (key == 't') {
+      Tower tmp = new Tower() ;
+      towers.add(tmp);
+    }
+    if (key == 'c') {
+      Cannon tmp = new Cannon();
+      towers.add(tmp);
+    }
   }
 }
 

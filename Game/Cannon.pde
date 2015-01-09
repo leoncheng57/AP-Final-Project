@@ -11,7 +11,7 @@ class Cannon extends Tower {
   }
 
   /*------------------CONSTRUCTORS---------------*/
-  Tower() { //create a default tower
+  Cannon() { //create a default tower
     xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
     yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
     col = #31A512;
@@ -22,8 +22,15 @@ class Cannon extends Tower {
   void drawMe(){
     fill(col);
     rect(xCor,yCor,cellSize,cellSize); 
+    
   }
   
+  
+   CannonAmmo createAmmo() { //specific to every tower type
+     CannonAmmo a = new CannonAmmo(xCor, yCor); 
+     return a; 
+  }
+
 
   
 }

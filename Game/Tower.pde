@@ -24,6 +24,10 @@ class Tower {
     rect(xCor,yCor,cellSize,cellSize); 
   }
   
+  Ammo createAmmo() { //specific to every tower type
+     Ammo a = new Ammo(xCor, yCor); 
+     return a; 
+  }
 
   
 }

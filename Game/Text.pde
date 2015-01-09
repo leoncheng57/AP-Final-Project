@@ -5,11 +5,11 @@ class Text {
   float xCor, yCor;
 
   //ISSUE: need a better way to handle the positions of texts
-  Text(String s) {
+  Text(String s, float x, float y) {
     msg = s;
     fontSize = 16;
-    xCor = 0;
-    yCor = cellSize*numCellsCol + 16;
+    xCor = x;
+    yCor = y;
     col = 255;
   }
 
