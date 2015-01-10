@@ -1,8 +1,8 @@
 class Ammo {
-  float xCor, yCor , atk;
+  float xCor, yCor, atk;
   String type;
   color col;
-  
+
   String toString() {
     String[] a = {
       "x: "+xCor, "y: "+yCor, "type: "+type
@@ -19,14 +19,14 @@ class Ammo {
     atk  = 10;//subj to change
   }
 
- void drawMe(){
-   fill(col);
-   ellipse(xCor,yCor,20,10); //shape of ammo 
- }
- 
- void shoot(){
-   xCor += 1;//speed
-   drawMe();
- }
+  void drawMe() {
+    fill(col);
+    ellipse(xCor, yCor, 20, 10); //shape of ammo
+  }
 
+  void shoot() {
+    xCor += 1;//speed
+    drawMe();
+  }
 }
+

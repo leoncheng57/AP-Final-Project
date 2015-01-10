@@ -111,8 +111,8 @@ void shootAmmo() {
 void graveDigger() {
   for (int i = 0; i < mons.size (); i++) {
     if (mons.get(i).alive == false) {
-      println("monster removed!");
-      msg = "monster removed!";
+      println("monster killed!");
+      msg = "monster killed!";
       mons.remove(i);
       i--;
     }
@@ -145,8 +145,8 @@ void hitMon() {
       Ammo a = ammos.get(i); 
       if (abs(a.xCor - m.xCor) < range  && abs(a.yCor - m.yCor) < range) {
         println("HIT!!");
-        fill(#E31010zz);
-        ellipse(a.xCor,a.yCor,50,50); //explosion animation
+        fill(#E31010);
+        ellipse(a.xCor, a.yCor, 50, 50); //explosion animation
         //rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
         m.hit(a.atk);
         ammos.remove(i);
@@ -255,5 +255,4 @@ void monsPack5() {
   Tank tk = new Tank();
   tk.drawMe();
   mons.add(tk);
-}
-
+}1

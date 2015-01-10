@@ -4,7 +4,7 @@ class Mon {
   String type;
   color col;
   boolean alive;
-  
+
 
   String toString() {
     String[] a = {
@@ -37,12 +37,9 @@ class Mon {
   }
 
   void hit(float atk) {
-    
     health = health - atk;
-
     if (health <= 0 ) { 
-      alive = false; 
-
+      alive = false;
     }
   }
 }

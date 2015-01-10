@@ -1,6 +1,5 @@
 class Tank extends Mon {
 
-
   Tank() { //create a default monster
     Random rnd = new Random();
     xCor = width;
@@ -10,6 +9,7 @@ class Tank extends Mon {
     alive = true;
     health = 80;
   } 
+
   void move() { 
     if (alive) {
       xCor -= 1.2;

@@ -17,22 +17,18 @@ class Cannon extends Tower {
     col = #31A512;
     type = "Cannon";
   }
-  
-  
-  void drawMe(){
+
+
+  void drawMe() {
     fill(col);
-    rect(xCor,yCor,cellSize,cellSize); 
-    
-  }
-  
-  
-   CannonAmmo createAmmo() { //specific to every tower type
-     CannonAmmo a = new CannonAmmo(xCor, yCor); 
-     return a; 
+    rect(xCor, yCor, cellSize, cellSize);
   }
 
 
-  
+  CannonAmmo createAmmo() { //specific to every tower type
+    CannonAmmo a = new CannonAmmo(xCor, yCor); 
+    return a;
+  }
 }
- 
- 
+
+

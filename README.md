@@ -38,10 +38,11 @@ CHANGELOG
 
 Ideas
 =====
->Improve tower you're input and make it by numbers
->Improve messaging by making an array of different types of messages to be printed on different lines
->Add a point and cash system
->impotence monster packs by making them user released by a key press.
+- Improve messaging by making an array of different types of messages to be printed on different lines
+- Add a point and cash system
+- Add more mon and tower types
+- IDEA: add a fast forward thingy by increasing the frameRate
+- IDEA: somehow, manually make our own shapes that can change color like rect or ellipse but look like towers, mons, missiles
 
 RESOURCES
 ==========
