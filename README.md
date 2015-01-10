@@ -31,6 +31,7 @@ CHANGELOG
  - 1/7 - created different character type 
  - 1/7 - improved hitMon method by assigning atk power to ammo and health to mon
  - 1/8 - created different ammo type
+ - 1/9 - connected type of tower with its corresponding type of ammo
 
 Ideas
 =====
