@@ -38,14 +38,10 @@ CHANGELOG
 
 Ideas
 =====
- - enemies
-  - different abiities
-  - different types 
- - towers
-  - upgrades
- - stages
-  - diff paths
- - ***MAKE A GAME LIKE PLANTS VS ZOMBIES (will be easier than a game like bloons tower defense)***
+>Improve tower you're input and make it by numbers
+>Improve messaging by making an array of different types of messages to be printed on different lines
+>Add a point and cash system
+>impotence monster packs by making them user released by a key press.
 
 RESOURCES
 ==========
