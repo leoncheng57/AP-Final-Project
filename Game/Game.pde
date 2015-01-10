@@ -9,7 +9,6 @@ int cellSize = 100;
 PFont f;
 int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second for some reason
 
-
 Cell[][] Grid = new Cell[numCellsRow][numCellsCol];
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
@@ -52,9 +51,6 @@ void draw() {
   drawMsgBox();
   drawText();
   loseGame();
-  //monsPack1();
-  //  monsPack2();
-  monsPack3();
 }
 
 
@@ -129,6 +125,7 @@ void moveMons() {
   }
 }
 
+//ISSUE: needs improving
 //IDEA: make an lose screen that stays there instead of exiting right away
 void loseGame() { 
   for (Mon m : mons) {
@@ -148,8 +145,9 @@ void hitMon() {
       Ammo a = ammos.get(i); 
       if (abs(a.xCor - m.xCor) < range  && abs(a.yCor - m.yCor) < range) {
         println("HIT!!");
-        fill(#D809D5);
-        rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
+        fill(#E31010zz);
+        ellipse(a.xCor,a.yCor,50,50); //explosion animation
+        //rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
         m.hit(a.atk);
         ammos.remove(i);
       }
@@ -163,11 +161,11 @@ void hitMon() {
 void mousePressed() {
   //add a tower at the position where the mouse is pressed
   if (mouseX < cellSize*Grid.length && mouseY < cellSize*Grid[0].length) {
-    if (key == 't') {
+    if (key == '1') {
       Tower tmp = new Tower() ;
       towers.add(tmp);
     }
-    if (key == 'c') {
+    if (key == '2') {
       Cannon tmp = new Cannon();
       towers.add(tmp);
     }
@@ -175,6 +173,8 @@ void mousePressed() {
 }
 
 
+
+/*-----------------------MONSTER PACKS-----------------------------*/
 void monsPack1() { 
   if (2*initFrameRate == frameCount) { //ISSUE: good idea to use initFrameRate?
     Mon m1 = new Mon();
@@ -228,9 +228,32 @@ void monsPack2() {
 
 void monsPack3() {
   if (2*initFrameRate == frameCount) {
-    Tank t1 = new Tank();
-    t1.drawMe();
-    mons.add(t1);
+    Tank tk = new Tank();
+    tk.drawMe();
+    mons.add(tk);
   }
+}
+
+
+void keyPressed() {
+  if (key=='z') {
+    monsPack4();
+  }  
+  if (key=='x') {
+    monsPack5();
+  }
+}
+
+
+void monsPack4() {
+  Mon m = new Mon();
+  m.drawMe();
+  mons.add(m);
+}
+
+void monsPack5() { 
+  Tank tk = new Tank();
+  tk.drawMe();
+  mons.add(tk);
 }
 
