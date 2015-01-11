@@ -6,14 +6,14 @@ int setHeight = 600;
 int numCellsCol = 5; 
 int numCellsRow = 6;
 int cellSize = 100;
-PFont f;
+PFont font;
 int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second for some reason
 
-Cell[][] Grid = new Cell[numCellsRow][numCellsCol];
+Cell[][] grid = new Cell[numCellsRow][numCellsCol];
+Text[] texts = new Text[5];
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
-ArrayList<Text> texts = new ArrayList<Text>();
 
 void setup() {
   size(setWidth, setHeight);
@@ -23,16 +23,16 @@ void setup() {
 }
 
 void makeFont() {
-  f = createFont("Arial", 16);
+  font = createFont("Arial", 16);
   //  see the fonts already installed onto the system
   //  String[] fontList = PFont.list();
   //  println(fontList);
 }
 
 void makeGrid() {
-  for (int col = 0; col<Grid.length; col++) {
-    for (int row = 0; row<Grid[0].length; row++) {
-      Grid[col][row] = new Cell(col, row);
+  for (int col = 0; col<grid.length; col++) {
+    for (int row = 0; row<grid[0].length; row++) {
+      grid[col][row] = new Cell(col, row);
     }
   }
 }
@@ -48,19 +48,12 @@ void draw() {
   moveMons();
   hitMon();
   graveDigger();
+  loseGame();
   drawTextBox();
   drawText();
-  loseGame();
+  stopGame();
 }
 
-
-void drawText() {
-  textFont(f, 16);
-  fill(255);
-  for (Text tx: texts){
-    tx.drawMe();
-  }
-}
 
 void drawTextBox() {
   rectMode(CORNER);
@@ -69,11 +62,22 @@ void drawTextBox() {
   rectMode(CENTER);
 }
 
+void drawText() {
+  textFont(font, 16);
+  fill(255);
+  for (Text tx : texts) {
+    if (tx != null) {
+      tx.drawMe();
+    }
+  }
+}
+
+
 void drawOutline() {
-  if (mouseX >0 && mouseY > 0 && mouseX < cellSize*Grid.length && mouseY < cellSize*Grid[0].length) {
+  if (mouseX >0 && mouseY > 0 && mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
     int x = mouseX / cellSize;
     int y = mouseY / cellSize;
-    Grid[x][y].outlineMe();
+    grid[x][y].outlineMe();
   }
 }
 
@@ -112,8 +116,8 @@ void shootAmmo() {
 void graveDigger() {
   for (int i = 0; i < mons.size (); i++) {
     if (mons.get(i).alive == false) {
-      println("monster killed!");
-      Text tx = new Text("monster killed!", 0, cellSize*numCellsCol + 16);
+      Text tx = new Text(mons.get(i).type+" killed!", 0);
+      texts[0]=tx;
       mons.remove(i);
       i--;
     }
@@ -126,15 +130,19 @@ void moveMons() {
   }
 }
 
-//ISSUE: needs improving
-//IDEA: make an lose screen that stays there instead of exiting right away
+//IDEA: make better lose screen 
 void loseGame() { 
   for (Mon m : mons) {
     if (m.xCor<0) {
-      background(0);
-      println("YOU LOSE THE GAME!");
-      noLoop();
+      Text tx = new Text("YOU LOST!", 4);
+      texts[4]=tx;
     }
+  }
+}
+
+void stopGame() {
+  if (texts[4] != null) {
+    noLoop();
   }
 }
 
@@ -157,11 +165,12 @@ void hitMon() {
 }
 
 
-//creates specfic towers
+//ISSUE: Can make a tower on top of another one
+//makes specfic towers
 //press a key to specify the type
 void mousePressed() {
   //add a tower at the position where the mouse is pressed
-  if (mouseX < cellSize*Grid.length && mouseY < cellSize*Grid[0].length) {
+  if (canDrawTower()) {
     if (key == '1') {
       Tower tmp = new Tower() ;
       towers.add(tmp);
@@ -172,6 +181,23 @@ void mousePressed() {
     }
   }
 }
+
+
+boolean canDrawTower() {
+  float xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
+  float yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
+  for (Tower tw : towers) {
+    if (xCor == tw.xCor && yCor == tw.yCor) {
+      return false;
+    }
+  }
+  if (mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 
 
@@ -257,3 +283,4 @@ void monsPack5() {
   tk.drawMe();
   mons.add(tk);
 }
+

@@ -34,6 +34,8 @@ CHANGELOG
  - 1/9 - connected type of tower with its corresponding type of ammo
  - 1/10 - added simple explosion animation
  - 1/10 - added keyboard input to activate monster packs
+ - 1/10 - improved text by making an array of texts for different texts on different lines
+ - 1/10 - fixed problem that towers could be created on top another
 
 
 Ideas

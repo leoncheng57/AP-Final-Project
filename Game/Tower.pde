@@ -28,7 +28,6 @@ class Tower {
      Ammo a = new Ammo(xCor, yCor); 
      return a; 
   }
-
   
 }
 
