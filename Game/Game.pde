@@ -13,7 +13,7 @@ Cell[][] Grid = new Cell[numCellsRow][numCellsCol];
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
-String msg = "";
+ArrayList<Text> texts = new ArrayList<Text>();
 
 void setup() {
   size(setWidth, setHeight);
@@ -48,7 +48,7 @@ void draw() {
   moveMons();
   hitMon();
   graveDigger();
-  drawMsgBox();
+  drawTextBox();
   drawText();
   loseGame();
 }
@@ -57,11 +57,12 @@ void draw() {
 void drawText() {
   textFont(f, 16);
   fill(255);
-  text(msg, 0, cellSize*numCellsCol + 16);
-  println(msg);
+  for (Text tx: texts){
+    tx.drawMe();
+  }
 }
 
-void drawMsgBox() {
+void drawTextBox() {
   rectMode(CORNER);
   fill(0);
   rect(0, cellSize*numCellsCol, width, height-cellSize*numCellsCol);
@@ -112,7 +113,7 @@ void graveDigger() {
   for (int i = 0; i < mons.size (); i++) {
     if (mons.get(i).alive == false) {
       println("monster killed!");
-      msg = "monster killed!";
+      Text tx = new Text("monster killed!", 0, cellSize*numCellsCol + 16);
       mons.remove(i);
       i--;
     }
@@ -255,4 +256,4 @@ void monsPack5() {
   Tank tk = new Tank();
   tk.drawMe();
   mons.add(tk);
-}1
+}
