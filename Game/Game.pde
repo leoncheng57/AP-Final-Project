@@ -8,6 +8,7 @@ int numCellsRow = 6;
 int cellSize = 100;
 PFont font;
 int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second for some reason
+char currentTowerType = '1';
 
 Cell[][] grid = new Cell[numCellsRow][numCellsCol];
 Text[] texts = new Text[5];
@@ -165,23 +166,19 @@ void hitMon() {
 }
 
 
-//ISSUE: Can make a tower on top of another one
-//makes specfic towers
-//press a key to specify the type
+//makes a specfic tower, press a key to specify the type
 void mousePressed() {
-  //add a tower at the position where the mouse is pressed
   if (canDrawTower()) {
-    if (key == '1') {
+    if (currentTowerType == '1') {
       Tower tmp = new Tower() ;
       towers.add(tmp);
     }
-    if (key == '2') {
+    if (currentTowerType == '2') {
       Cannon tmp = new Cannon();
       towers.add(tmp);
     }
   }
 }
-
 
 boolean canDrawTower() {
   float xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
@@ -268,6 +265,9 @@ void keyPressed() {
   }  
   if (key=='x') {
     monsPack5();
+  }
+  if (key =='1' || key == '2') {
+    currentTowerType = key;
   }
 }
 

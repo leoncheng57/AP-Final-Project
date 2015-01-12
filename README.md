@@ -36,7 +36,7 @@ CHANGELOG
  - 1/10 - added keyboard input to activate monster packs
  - 1/10 - improved text by making an array of texts for different texts on different lines
  - 1/10 - fixed problem that towers could be created on top another
-
+ - 1/12 - added var currentTowerType to always have a tower type to click to create
 
 Ideas
 =====
