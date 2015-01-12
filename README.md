@@ -1,4 +1,4 @@
-AP-Final-Project
+Boxes Vs. Circles
 ================
 Pd 1  <br />
 Leon Cheng  <br />
@@ -45,6 +45,9 @@ Ideas
 - Add more mon and tower types
 - IDEA: add a fast forward thingy by increasing the frameRate
 - IDEA: somehow, manually make our own shapes that can change color like rect or ellipse but look like towers, mons, missiles
+- Make a start screen
+- Make a lose screen
+- Make lives (ex. 3 lives)
 
 RESOURCES
 ==========
