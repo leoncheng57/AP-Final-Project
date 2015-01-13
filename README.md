@@ -8,6 +8,20 @@ Kevin Mejia  <br />
 >What our project does  <br /> 
 >how to run it and use it  <br />
 
+Ideas
+=====
+- Improve messaging by making an array of different types of messages to be printed on different lines
+- Add a point and cash system
+- Add more mon and tower types
+- IDEA: add a fast forward thingy by increasing the frameRate
+- IDEA: somehow, manually make our own shapes that can change color like rect or ellipse but look like towers, mons, missiles
+- Make a start screen
+- Make a lose screen
+- Make lives (ex. 3 lives)
+- maybe rename Ammo to TowerAmmo
+- diff towers have diff colors
+- upgrades to towers!
+
 CHANGELOG
 ===========
  - 12/19 - created repo
@@ -38,16 +52,6 @@ CHANGELOG
  - 1/10 - fixed problem that towers could be created on top another
  - 1/12 - added var currentTowerType to always have a tower type to click to create
 
-Ideas
-=====
-- Improve messaging by making an array of different types of messages to be printed on different lines
-- Add a point and cash system
-- Add more mon and tower types
-- IDEA: add a fast forward thingy by increasing the frameRate
-- IDEA: somehow, manually make our own shapes that can change color like rect or ellipse but look like towers, mons, missiles
-- Make a start screen
-- Make a lose screen
-- Make lives (ex. 3 lives)
 
 RESOURCES
 ==========
