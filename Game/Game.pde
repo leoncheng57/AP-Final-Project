@@ -9,6 +9,8 @@ int cellSize = 100;
 PFont font;
 int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second for some reason
 char currentTowerType = '1';
+int score =0;
+int money= 200;
 
 Cell[][] grid = new Cell[numCellsRow][numCellsCol];
 Text[] texts = new Text[5];
@@ -121,6 +123,11 @@ void graveDigger() {
       texts[0]=tx;
       mons.remove(i);
       i--;
+      score += 100;
+      money += 10;
+      println(score);
+      println(money+"$");
+      //ISSUE: have to add this to textBox drawing
     }
   }
 }
@@ -193,6 +200,13 @@ boolean canDrawTower() {
   } else {
     return false;
   }
+  
+  //ISSUE: add the code below
+  /*
+  if (money >= 50) {
+    money -= 50;
+  }
+  */
 }
 
 
