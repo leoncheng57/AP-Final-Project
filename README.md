@@ -48,6 +48,9 @@ Ideas
 - Make a start screen
 - Make a lose screen
 - Make lives (ex. 3 lives)
+- maybe rename Ammo to TowerAmmo
+- diff towers have diff colors
+- upgrades to towers!
 
 RESOURCES
 ==========
