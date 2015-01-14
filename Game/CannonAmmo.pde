@@ -12,7 +12,7 @@ class CannonAmmo extends Ammo {
     ellipse(xCor, yCor, 20, 10); //shape of ammo
   }
 
-  void shoot() {
+  void move() {
     xCor += 0.5;//speed
     drawMe();
   }

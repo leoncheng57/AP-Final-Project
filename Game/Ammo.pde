@@ -24,7 +24,7 @@ class Ammo {
     ellipse(xCor, yCor, 20, 10); //shape of ammo
   }
 
-  void shoot() {
+  void move() {
     xCor += 1;//speed
     drawMe();
   }

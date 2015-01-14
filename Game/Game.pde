@@ -46,7 +46,7 @@ void draw() {
   drawOutline();
   drawTowers();
   makeAmmo();
-  shootAmmo();
+  moveAmmo();
   //printData();
   moveMons();
   hitMon();
@@ -109,9 +109,9 @@ void makeAmmo() {
   }
 }
 
-void shootAmmo() {
+void moveAmmo() {
   for (int i =0; i<ammos.size (); i++) {
-    ammos.get(i).shoot();
+    ammos.get(i).move();
   }
 }
 
