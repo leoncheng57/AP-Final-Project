@@ -23,6 +23,7 @@ void setup() {
   rectMode(CENTER);
   makeFont();
   makeGrid();
+  setupScoreAndMoney();
 }
 
 void makeFont() {
@@ -40,6 +41,10 @@ void makeGrid() {
   }
 }
 
+void setupScoreAndMoney() {
+  changeText("Your score: "+score, 1);
+  changeText("Money left: "+money, 2);
+}
 
 void draw() {
   background(#012489);
@@ -75,6 +80,10 @@ void drawText() {
   }
 }
 
+
+void changeText(String s, int line) {
+  texts[line] = new Text(s, line);
+}
 
 void drawOutline() {
   if (mouseX >0 && mouseY > 0 && mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
@@ -119,15 +128,13 @@ void moveAmmo() {
 void graveDigger() {
   for (int i = 0; i < mons.size (); i++) {
     if (mons.get(i).alive == false) {
-      Text tx = new Text(mons.get(i).type+" killed!", 0);
-      texts[0]=tx;
+      changeText(mons.get(i).type+" killed!", 0);
       mons.remove(i);
       i--;
       score += 100;
       money += 10;
-      println(score);
-      println(money+"$");
-      //ISSUE: have to add this to textBox drawing
+      changeText("Your score: "+score, 1);
+      changeText("Money left: "+money, 2);
     }
   }
 }
@@ -142,8 +149,7 @@ void moveMons() {
 void loseGame() { 
   for (Mon m : mons) {
     if (m.xCor<0) {
-      Text tx = new Text("YOU LOST!", 4);
-      texts[4]=tx;
+      changeText("YOU LOST!", 4);
     }
   }
 }
@@ -187,28 +193,39 @@ void mousePressed() {
   }
 }
 
+
 boolean canDrawTower() {
+
+  //x and y coors of the corner of a Cell box
   float xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
   float yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
+
+  //Prevents towers from being drawn on top of each other
   for (Tower tw : towers) {
     if (xCor == tw.xCor && yCor == tw.yCor) {
       return false;
     }
   }
-  if (mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
-    return true;
-  } else {
-    return false;
-  }
-  
-  //ISSUE: add the code below
-  /*
-  if (money >= 50) {
-    money -= 50;
-  }
-  */
-}
 
+  //ISSUE: costs maybe should be in classes?
+  //make sure it is inside the user window thingy
+  if (mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
+    int towerCost = 10;
+    if (key=='1') {
+      towerCost = 10; //COST OF TOWER
+    }
+    if (key=='2') {
+      towerCost = 20; //COST OF CANNON
+    }
+    if (money>=towerCost) { 
+      money -= towerCost;
+      changeText("Money left: "+money, 2);
+      return true;
+    }
+  }  
+  
+  return false;
+}
 
 
 

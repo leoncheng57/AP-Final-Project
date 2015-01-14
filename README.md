@@ -10,20 +10,17 @@ Kevin Mejia  <br />
 
 Ideas
 =====
-- Improve messaging by making an array of different types of messages to be printed on different lines
-- Add a point and cash system
 - Add more mon and tower types
 - IDEA: add a fast forward thingy by increasing the frameRate
 - IDEA: somehow, manually make our own shapes that can change color like rect or ellipse but look like towers, mons, missiles
 - Make a start screen
 - Make a lose screen
 - Make lives (ex. 3 lives)
-- maybe rename Ammo to TowerAmmo
 - diff towers have diff colors
 - upgrades to towers!
 - make instructions
 - codeReview: 11-better to represent the character '1' as int 1
-
+- organize code blocks better
 
 CHANGELOG
 ===========
