@@ -1,14 +1,4 @@
 class Cannon extends Tower {
-  float xCor, yCor;
-  String type;
-  color col;
-
-  String toString() {
-    String[] a = {
-      "x: "+xCor, "y: "+yCor, "type: "+type
-    };
-    return Arrays.toString(a);
-  }
 
   /*------------------CONSTRUCTORS---------------*/
   Cannon() { //create a default tower
@@ -17,12 +7,6 @@ class Cannon extends Tower {
     col = #31A512;
     type = "Cannon";
     cost = 20;
-}
-
-
-  void drawMe() {
-    fill(col);
-    rect(xCor, yCor, cellSize, cellSize);
   }
 
 
@@ -31,5 +15,4 @@ class Cannon extends Tower {
     return a;
   }
 }
-
 

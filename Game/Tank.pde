@@ -8,14 +8,8 @@ class Tank extends Mon {
     type = "Tank";
     alive = true;
     health = 80;
-    
+    speed = 1.2;    
   } 
 
-  void move() { 
-    if (alive) {
-      xCor -= 1.2;
-      drawMe();
-    }
-  }
 }
 

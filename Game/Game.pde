@@ -193,15 +193,15 @@ void mousePressed() {
       towerCost = tmp.cost;
       towers.add(tmp);
     }
-    
+
     money = money - towerCost;
-     changeText("Money left: "+money, 2);
+    changeText("Money left: "+money, 2);
   }
 }
 
 
 boolean canDrawTower() {
-  
+
   //x and y coors of the corner of a Cell box
   float xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
   float yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
@@ -213,25 +213,15 @@ boolean canDrawTower() {
     }
   }
 
-  //ISSUE: costs maybe should be in classes?
-  //make sure it is inside the user window thingy
+  //to make sure it is inside the user window size
   if (mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
     
-    /*
-    int towerCost = 10;
-    if (key=='1') {
-      towerCost = 10; //COST OF TOWER
-    }
-    if (key=='2') {
-      towerCost = 20; //COST OF CANNON
-    }
-    */
-    if (money>=towerCost) { //money gets subtracted in mousePressed()
- 
+    //to make sure user has enough money
+    if (money>=towerCost) { //money gets subtracted in mousePressed()   
       return true;
     }
   }  
-  
+
   return false;
 }
 

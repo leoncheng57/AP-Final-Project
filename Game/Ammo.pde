@@ -1,5 +1,5 @@
 class Ammo {
-  float xCor, yCor, atk;
+  float xCor, yCor, atk, speed;
   String type;
   color col;
 
@@ -17,6 +17,7 @@ class Ammo {
     col = #FA0B03;
     type = "defaultAmmo";
     atk  = 10;//subj to change
+    speed = 1.2;
   }
 
   void drawMe() {
@@ -25,7 +26,7 @@ class Ammo {
   }
 
   void move() {
-    xCor += 1;//speed
+    xCor += speed;
     drawMe();
   }
 }

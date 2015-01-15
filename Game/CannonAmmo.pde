@@ -5,17 +5,9 @@ class CannonAmmo extends Ammo {
     super(a,b);
     atk = 20;
     col = #1B3904;
+    speed = 0.5;
   }
 
-  void drawMe() {
-    fill(col);
-    ellipse(xCor, yCor, 20, 10); //shape of ammo
-  }
-
-  void move() {
-    xCor += 0.5;//speed
-    drawMe();
-  }
 }
 
 

@@ -1,6 +1,6 @@
 class Mon {
 
-  float xCor, yCor, health;
+  float xCor, yCor, health, speed;
   String type;
   color col;
   boolean alive;
@@ -22,6 +22,7 @@ class Mon {
     type = "defaultMon";
     alive = true;
     health = 20;
+    speed = 2;
   } 
 
   void drawMe() {
@@ -31,7 +32,7 @@ class Mon {
 
   void move() { 
     if (alive) {
-      xCor -= 2;
+      xCor -= speed;
       drawMe();
     }
   }
