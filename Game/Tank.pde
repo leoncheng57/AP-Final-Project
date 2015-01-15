@@ -8,6 +8,7 @@ class Tank extends Mon {
     type = "Tank";
     alive = true;
     health = 80;
+    
   } 
 
   void move() { 

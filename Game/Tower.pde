@@ -2,7 +2,7 @@ class Tower {
   float xCor, yCor;
   String type;
   color col;
-
+  int cost;
   String toString() {
     String[] a = {
       "x: "+xCor, "y: "+yCor, "type: "+type
@@ -16,6 +16,7 @@ class Tower {
     yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
     col = #31A512;
     type = "defaultTower";
+    cost = 10;
   }
   
   

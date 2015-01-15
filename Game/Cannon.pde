@@ -16,7 +16,8 @@ class Cannon extends Tower {
     yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
     col = #31A512;
     type = "Cannon";
-  }
+    cost = 20;
+}
 
 
   void drawMe() {

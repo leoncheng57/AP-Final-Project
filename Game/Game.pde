@@ -11,6 +11,7 @@ int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second f
 char currentTowerType = '1';
 int score =0;
 int money= 200;
+int towerCost = 10;//for defaultMon
 
 Cell[][] grid = new Cell[numCellsRow][numCellsCol];
 Text[] texts = new Text[5];
@@ -184,18 +185,23 @@ void mousePressed() {
   if (canDrawTower()) {
     if (currentTowerType == '1') {
       Tower tmp = new Tower() ;
+      towerCost = tmp.cost;
       towers.add(tmp);
     }
     if (currentTowerType == '2') {
       Cannon tmp = new Cannon();
+      towerCost = tmp.cost;
       towers.add(tmp);
     }
+    
+    money = money - towerCost;
+     changeText("Money left: "+money, 2);
   }
 }
 
 
 boolean canDrawTower() {
-
+  
   //x and y coors of the corner of a Cell box
   float xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
   float yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
@@ -210,6 +216,8 @@ boolean canDrawTower() {
   //ISSUE: costs maybe should be in classes?
   //make sure it is inside the user window thingy
   if (mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
+    
+    /*
     int towerCost = 10;
     if (key=='1') {
       towerCost = 10; //COST OF TOWER
@@ -217,9 +225,9 @@ boolean canDrawTower() {
     if (key=='2') {
       towerCost = 20; //COST OF CANNON
     }
-    if (money>=towerCost) { 
-      money -= towerCost;
-      changeText("Money left: "+money, 2);
+    */
+    if (money>=towerCost) { //money gets subtracted in mousePressed()
+ 
       return true;
     }
   }  
