@@ -3,6 +3,8 @@ class Tower {
   String type;
   color col;
   int cost;
+
+
   String toString() {
     String[] a = {
       "x: "+xCor, "y: "+yCor, "type: "+type
@@ -18,17 +20,17 @@ class Tower {
     type = "defaultTower";
     cost = 10;
   }
-  
-  
-  void drawMe(){
+
+
+  void drawMe() {
     fill(col);
-    rect(xCor,yCor,cellSize,cellSize); 
+    rect(xCor, yCor, cellSize, cellSize);
   }
-  
+
   Ammo createAmmo() { //specific to every tower type
-     Ammo a = new Ammo(xCor, yCor); 
-     return a; 
+    Ammo a = new Ammo(xCor, yCor); 
+    a.upgradeMe();   
+    return a;
   }
-  
 }
 

@@ -12,6 +12,8 @@ char currentTowerType = '1';
 int score =0;
 int money= 200;
 int towerCost = 10;//for defaultMon
+//int level = 1;//to be used to generate monsters propotional to your progress
+Random rnd = new Random();//to be used when generating monsters
 
 Cell[][] grid = new Cell[numCellsRow][numCellsCol];
 Text[] texts = new Text[5];
@@ -61,6 +63,7 @@ void draw() {
   drawTextBox();
   drawText();
   stopGame();
+ // monsPacks() ;
 }
 
 
@@ -210,6 +213,7 @@ boolean canDrawTower() {
   for (Tower tw : towers) {
     if (xCor == tw.xCor && yCor == tw.yCor) {
       return false;
+      
     }
   }
 
@@ -312,4 +316,18 @@ void monsPack5() {
   tk.drawMe();
   mons.add(tk);
 }
+//void monsPacks() {
+// int tries = 0;
+// 
+//  while (tries < level) {
+//   if (rnd.nextInt(2) ==0) {
+//    monsPack5();
+//   } 
+//   else {monsPack4() ;}
+//   tries ++; 
+//  }
+//  level = (score / 1000)+1;
+//}
+
+
 

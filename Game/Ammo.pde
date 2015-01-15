@@ -2,7 +2,7 @@ class Ammo {
   float xCor, yCor, atk, speed;
   String type;
   color col;
-
+  int upgradeCount;
   String toString() {
     String[] a = {
       "x: "+xCor, "y: "+yCor, "type: "+type
@@ -29,5 +29,9 @@ class Ammo {
     xCor += speed;
     drawMe();
   }
+  void upgradeMe() {
+for(int i=0;i<upgradeCount;i++) {
+      atk = atk * 2;
+    }
+  }
 }
-
