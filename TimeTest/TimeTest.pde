@@ -1,7 +1,6 @@
 Time timeMonsters = new Time(1000); //delay of 1 second
 
 void setup() {
-  timeMonsters=new Time(1000);
 }
 
 void draw() {

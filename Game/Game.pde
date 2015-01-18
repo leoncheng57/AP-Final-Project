@@ -13,7 +13,8 @@ int score =0;
 int money= 200;
 int towerCost = 10;//for defaultMon
 //int level = 1;//to be used to generate monsters propotional to your progress
-Random rnd = new Random();//to be used when generating monsters
+Random rnd = new Random();//to be used when generating monsters //ISSUE: this may be unnecessary
+Delay delayMonsPacks;
 
 Cell[][] grid = new Cell[numCellsRow][numCellsCol];
 Text[] texts = new Text[5];
@@ -246,6 +247,9 @@ void keyPressed() {
   if (key=='x') {
     monsPack5();
   }
+  if (key=='c') {
+    monsPack6();
+  }
   if (key =='1' || key == '2') {
     currentTowerType = key;
   }
@@ -321,6 +325,7 @@ void monsPack5() {
   tk.drawMe();
   mons.add(tk);
 }
+
 //void monsPacks() {
 // int tries = 0;
 // 
@@ -333,4 +338,12 @@ void monsPack5() {
 //  }
 //  level = (score / 1000)+1;
 //}
+
+delayMonsPacks = new Delay(1000);
+
+void monsPack6() {
+  if (delayMonsPacks.begin()) {
+    println("YAY");
+  }
+}
 
