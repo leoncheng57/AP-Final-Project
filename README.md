@@ -21,6 +21,7 @@ Ideas
 - make instructions
 - codeReview: 11-better to represent the character '1' as int 1
 - organize code blocks better
+- delete extra folders
 
 CHANGELOG
 ===========

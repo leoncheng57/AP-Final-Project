@@ -55,7 +55,6 @@ void draw() {
   drawTowers();
   makeAmmo();
   moveAmmo();
-  //printData();
   moveMons();
   hitMon();
   graveDigger();
@@ -63,7 +62,8 @@ void draw() {
   drawTextBox();
   drawText();
   stopGame();
- // monsPacks() ;
+  // monsPacks() ;
+  //printData();
 }
 
 
@@ -83,7 +83,6 @@ void drawText() {
     }
   }
 }
-
 
 void changeText(String s, int line) {
   texts[line] = new Text(s, line);
@@ -106,11 +105,72 @@ void printData() {
   }
 }
 
+//IDEA: make better lose screen 
+void loseGame() { 
+  for (Mon m : mons) {
+    if (m.xCor<0) {
+      changeText("YOU LOST!", 4);
+    }
+  }
+}
+
+void stopGame() {
+  if (texts[4] != null) {
+    noLoop();
+  }
+}
+
+/*--------------------------------------------------------------*/
+/*------------------------TOWERS--------------------------------*/
+/*--------------------------------------------------------------*/
+
+//makes a specfic tower, press a key to specify the type
+void mousePressed() {
+  if (canDrawTower()) {
+    if (currentTowerType == '1') {
+      Tower tmp = new Tower() ;
+      towerCost = tmp.cost;
+      towers.add(tmp);
+    }
+    if (currentTowerType == '2') {
+      Cannon tmp = new Cannon();
+      towerCost = tmp.cost;
+      towers.add(tmp);
+    }
+    money = money - towerCost;
+    changeText("Money left: "+money, 2);
+  }
+}
+
 void drawTowers() {
   for (int i =0; i<towers.size (); i++) {
     towers.get(i).drawMe();
   }
 }
+
+boolean canDrawTower() {
+  //x and y coors of the corner of a Cell box
+  float xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
+  float yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
+  //Prevents towers from being drawn on top of each other
+  for (Tower tw : towers) {
+    if (xCor == tw.xCor && yCor == tw.yCor) {
+      return false;
+    }
+  }
+  //to make sure it is inside the user window size
+  if (mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
+    //to make sure user has enough money
+    if (money>=towerCost) { //money gets subtracted in mousePressed()   
+      return true;
+    }
+  }  
+  return false;
+}
+
+/*--------------------------------------------------------------*/
+/*------------------------AMMO--------------------------------*/
+/*--------------------------------------------------------------*/
 
 //create ammo every 60 frames
 void makeAmmo() {
@@ -127,6 +187,31 @@ void moveAmmo() {
     ammos.get(i).move();
   }
 }
+
+
+/*--------------------------------------------------------------*/
+/*------------------------MONSTERS------------------------------*/
+/*--------------------------------------------------------------*/
+
+
+//sees if the ammo hit the Mon, and remoevs the Ammo from arraylist ammos
+void hitMon() {
+  float range = 10; //this will be the range of the ammo (how far from mon to be accepted as a hit)
+  for (Mon m : mons) {
+    for (int i = 0; i<ammos.size (); i++) {
+      Ammo a = ammos.get(i); 
+      if (abs(a.xCor - m.xCor) < range  && abs(a.yCor - m.yCor) < range) {
+        println("HIT!!");
+        fill(#E31010);
+        ellipse(a.xCor, a.yCor, 50, 50); //explosion animation
+        //rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
+        m.hit(a.atk);
+        ammos.remove(i);
+      }
+    }
+  }
+}
+
 
 //removes dead mons from the arraylist mons
 void graveDigger() {
@@ -149,89 +234,23 @@ void moveMons() {
   }
 }
 
-//IDEA: make better lose screen 
-void loseGame() { 
-  for (Mon m : mons) {
-    if (m.xCor<0) {
-      changeText("YOU LOST!", 4);
-    }
-  }
-}
 
-void stopGame() {
-  if (texts[4] != null) {
-    noLoop();
-  }
-}
+/*--------------------------------------------------------------*/
+/*------------------------MONSTER PACKS-------------------------*/
+/*--------------------------------------------------------------*/
 
-//sees if the ammo hit the Mon, and remoevs the Ammo from arraylist ammos
-void hitMon() {
-  float range = 10; //this will be the range of the ammo (how far from mon to be accepted as a hit)
-  for (Mon m : mons) {
-    for (int i = 0; i<ammos.size (); i++) {
-      Ammo a = ammos.get(i); 
-      if (abs(a.xCor - m.xCor) < range  && abs(a.yCor - m.yCor) < range) {
-        println("HIT!!");
-        fill(#E31010);
-        ellipse(a.xCor, a.yCor, 50, 50); //explosion animation
-        //rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
-        m.hit(a.atk);
-        ammos.remove(i);
-      }
-    }
-  }
-}
-
-
-//makes a specfic tower, press a key to specify the type
-void mousePressed() {
-  if (canDrawTower()) {
-    if (currentTowerType == '1') {
-      Tower tmp = new Tower() ;
-      towerCost = tmp.cost;
-      towers.add(tmp);
-    }
-    if (currentTowerType == '2') {
-      Cannon tmp = new Cannon();
-      towerCost = tmp.cost;
-      towers.add(tmp);
-    }
-
-    money = money - towerCost;
-    changeText("Money left: "+money, 2);
-  }
-}
-
-
-boolean canDrawTower() {
-
-  //x and y coors of the corner of a Cell box
-  float xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
-  float yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
-
-  //Prevents towers from being drawn on top of each other
-  for (Tower tw : towers) {
-    if (xCor == tw.xCor && yCor == tw.yCor) {
-      return false;
-      
-    }
-  }
-
-  //to make sure it is inside the user window size
-  if (mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
-    
-    //to make sure user has enough money
-    if (money>=towerCost) { //money gets subtracted in mousePressed()   
-      return true;
-    }
+void keyPressed() {
+  if (key=='z') {
+    monsPack4();
   }  
-
-  return false;
+  if (key=='x') {
+    monsPack5();
+  }
+  if (key =='1' || key == '2') {
+    currentTowerType = key;
+  }
 }
 
-
-
-/*-----------------------MONSTER PACKS-----------------------------*/
 void monsPack1() { 
   if (2*initFrameRate == frameCount) { //ISSUE: good idea to use initFrameRate?
     Mon m1 = new Mon();
@@ -291,20 +310,6 @@ void monsPack3() {
   }
 }
 
-
-void keyPressed() {
-  if (key=='z') {
-    monsPack4();
-  }  
-  if (key=='x') {
-    monsPack5();
-  }
-  if (key =='1' || key == '2') {
-    currentTowerType = key;
-  }
-}
-
-
 void monsPack4() {
   Mon m = new Mon();
   m.drawMe();
@@ -328,6 +333,4 @@ void monsPack5() {
 //  }
 //  level = (score / 1000)+1;
 //}
-
-
 
