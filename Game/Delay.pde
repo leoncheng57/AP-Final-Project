@@ -37,7 +37,7 @@ class Delay {
   boolean repeat (int countLimit) {
     if (this.count<countLimit && millis()-startTime>=duration) {
       startTime = millis(); //reset the startTime to the current time
-      countLimit++;
+      count++;
       return true;
     } else {
       return false;
