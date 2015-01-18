@@ -1,3 +1,20 @@
+Time timeMonsters = new Time(1000); //delay of 1 second
+
+void setup() {
+  timeMonsters=new Time(1000);
+}
+
+void draw() {
+  if (timeMonsters.canStart()) {
+    println("hello");
+  }
+
+  if (timeMonsters.repeat()) {
+    println("hel");
+  }
+}
+
+
 /*
 int time;
  int wait = 1000;
@@ -27,32 +44,18 @@ int startTime = millis();
  }
  */
 
-ArrayList<Time> times = new ArrayList<Time>();
 
-void setup() {
-  Time t = new Time(1000);
-}
-
-void draw() {
-  for (Time t : times) {
-    println(t.lateStart());
-  }
-}
-
-class Time {
-
-  float startTime, duration;
-
-  Time(float duration) {
-    startTime = millis();
-    this.duration = duration;
-  }
-
-  boolean lateStart() {
-    if (millis() - startTime >= duration) {
-      return true;
-    } else
-      return false;
-  }
-}
-
+/*
+int startTime = 1000;
+ int duration = 1000;
+ boolean isComplete;
+ 
+ void draw() {
+ if (!isComplete) {
+ if (millis()-startTime>=duration) {
+ println("tick");
+ isComplete = true;
+ }
+ }
+ }
+ */
