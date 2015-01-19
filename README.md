@@ -67,6 +67,6 @@ Issues
 
 Reminders
 ========
- - use Driver.java
+ - use Driver.java, not anymore because we are using processing
 
 
