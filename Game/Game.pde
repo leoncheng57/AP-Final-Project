@@ -12,7 +12,7 @@ char currentTowerType = '1';
 int score =0;
 int money= 200;
 int towerCost = 10;//for defaultMon
-//int level = 1;//to be used to generate monsters propotional to your progress
+int level = 1;//to be used to generate monsters propotional to your progress
 Random rnd = new Random();//to be used when generating monsters //ISSUE: this may be unnecessary
 //Delay delayMonsPacks=new Delay(1000);
 
@@ -64,11 +64,11 @@ void draw() {
   drawTextBox();
   drawText();
   stopGame();
-  // monsPacks() ;
+  monsPacks() ;///ISSUE ... needs control
   //printData();
-//  if (delayMonsPacks.repeat(2)) {
-//    println("YAY");
-//  }
+  //  if (delayMonsPacks.repeat(2)) {
+  //    println("YAY");
+  //  }
 }
 
 void drawTextBox() {
@@ -133,11 +133,13 @@ void mousePressed() {
   if (canDrawTower()) {
     if (currentTowerType == '1') {
       Tower tmp = new Tower() ;
+      checkUpgrade(tmp);
       towerCost = tmp.cost;
       towers.add(tmp);
     }
     if (currentTowerType == '2') {
       Cannon tmp = new Cannon();
+      checkUpgrade(tmp);
       towerCost = tmp.cost;
       towers.add(tmp);
     }
@@ -152,16 +154,20 @@ void drawTowers() {
   }
 }
 
+void checkUpgrade(Tower newT) {
+  for (Tower oldT : towers) {
+    if (newT.xCor == oldT.xCor && newT.yCor == oldT.yCor) {
+      println("hello");
+      //changeText("SD",4);
+      changeText("You just upgraded a tower at "+int(newT.xCor/cellSize + .5)+","+int(newT.yCor/cellSize + .5) +"!!", 3);
+    }
+  }
+}
+
 boolean canDrawTower() {
   //x and y coors of the corner of a Cell box
   float xCor = ((mouseX / cellSize) * cellSize) + (cellSize/2);
   float yCor = ((mouseY / cellSize) * cellSize) + (cellSize/2);
-  //Prevents towers from being drawn on top of each other
-  for (Tower tw : towers) {
-    if (xCor == tw.xCor && yCor == tw.yCor) {
-      return false;
-    }
-  }
   //to make sure it is inside the user window size
   if (mouseX < cellSize*grid.length && mouseY < cellSize*grid[0].length) {
     //to make sure user has enough money
@@ -326,16 +332,17 @@ void monsPack5() {
   mons.add(tk);
 }
 
-//void monsPacks() {
-// int tries = 0;
-// 
-//  while (tries < level) {
-//   if (rnd.nextInt(2) ==0) {
-//    monsPack5();
-//   } 
-//   else {monsPack4() ;}
-//   tries ++; 
-//  }
-//  level = (score / 1000)+1;
-//}
+void monsPacks() {
+  int tries = 0;
+  //int level;
+  if (rnd.nextInt(10) <= level) {//this could keep changing
+    if (rnd.nextInt(2) ==0) {
+      monsPack5();
+    } else {
+      monsPack4() ;
+    }
+    tries ++;
+  }
+  level = (score / 1000)+1;
+}
 

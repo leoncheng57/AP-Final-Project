@@ -3,7 +3,7 @@ class Tower {
   String type;
   color col;
   int cost;
-
+  int upgradeCount; 
 
   String toString() {
     String[] a = {
