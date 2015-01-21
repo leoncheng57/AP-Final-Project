@@ -10,15 +10,17 @@ PFont font;
 int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second for some reason
 char currentTowerType = '1';
 int score =0;
-int money= 30;//changed from 200
+int money= 50;
 int towerCost = 10;//for defaultMon
-int level = 1;//to be used to generate monsters propotional to your progress
+int lives = 3;
+int level = 1;//to be used to generate monsters propotional to your progress //ISSUE: may not be neccesary
+int killCount = 0;
 Random rnd = new Random();//to be used when generating monsters //ISSUE: this may be unnecessary
 //Delay delayMonsPacks=new Delay(1000);
 
 
 Cell[][] grid = new Cell[numCellsRow][numCellsCol];
-Text[] texts = new Text[5];
+Text[] texts = new Text[6];
 ArrayList<Mon> mons = new ArrayList<Mon>();
 ArrayList<Tower> towers = new ArrayList<Tower>();
 ArrayList<Ammo> ammos = new ArrayList<Ammo>();
@@ -28,7 +30,7 @@ void setup() {
   rectMode(CENTER);
   makeFont();
   makeGrid();
-  setupScoreAndMoney();
+  setupMessages();
 }
 
 void makeFont() {
@@ -46,9 +48,11 @@ void makeGrid() {
   }
 }
 
-void setupScoreAndMoney() {
+void setupMessages() {
   changeText("Your score: "+score, 1);
   changeText("Money left: "+money, 2);
+  changeText("Lives left: "+lives, 4);
+  changeText("Monsters Killed: "+killCount, 5);
 }
 
 void draw() {
@@ -60,15 +64,16 @@ void draw() {
   moveMons();
   hitMon();
   graveDigger();
+  loseLife();
   loseGame();
   drawTextBox();
   drawText();
-  stopGame();
   monsPacks() ;///ISSUE ... needs control
   //printData();
   //  if (delayMonsPacks.repeat(2)) {
   //    println("YAY");
   //  }
+  println(lives);
 }
 
 void drawTextBox() {
@@ -109,18 +114,21 @@ void printData() {
   }
 }
 
-//IDEA: make better lose screen 
-void loseGame() { 
+void loseLife() {
+  int passedMons=0;
   for (Mon m : mons) {
     if (m.xCor<0) {
-      changeText("YOU LOST!", 4);
+      passedMons++;
     }
   }
+  println(passedMons);
+  lives = 3-passedMons; //3 is the initial num of lives
+  changeText("Lives left: "+lives, 4);
 }
 
-void stopGame() {
-  if (texts[4] != null) {
-    noLoop();
+void loseGame() {
+  if (lives <=0) {
+    noLoop();  //ISSUE: lose screen to be put here later on
   }
 }
 
@@ -158,7 +166,6 @@ void checkUpgrade(Tower newT) {
   for (Tower oldT : towers) {
     if (newT.xCor == oldT.xCor && newT.yCor == oldT.yCor) {
       println("hello");
-      //changeText("SD",4);
       changeText("You just upgraded a tower at "+int(newT.xCor/cellSize + .5)+","+int(newT.yCor/cellSize + .5) +"!!", 3);
     }
   }
@@ -228,10 +235,12 @@ void graveDigger() {
   for (int i = 0; i < mons.size (); i++) {
     if (mons.get(i).alive == false) {
       changeText(mons.get(i).type+" killed!", 0);
+      killCount++;
+      changeText("Monsters killed: "+killCount, 5);
       mons.remove(i);
       i--;
       score += 100;
-      money += 10;
+      money += 5;
       changeText("Your score: "+score, 1);
       changeText("Money left: "+money, 2);
     }
@@ -334,8 +343,7 @@ void monsPack5() {
 
 void monsPacks() {
   int tries = 0;
-  //int level;
-  if (rnd.nextInt(1000) <= level) {//this could keep changing
+  if (rnd.nextInt(500) <= level) {//this could keep changing, since level changes
     if (rnd.nextInt(2) ==0) {
       monsPack5();
     } else {
@@ -343,7 +351,7 @@ void monsPacks() {
     }
     tries ++;
   }
-  level = int(score / 10000)+1;//make a game both hard and doable, and infinite
-  
+  level = int(score / 1000)+1;//make a game both hard and doable, and infinite
+  changeText(level+"", 0);
 }
 

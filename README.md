@@ -22,6 +22,11 @@ Ideas
 - codeReview: 11-better to represent the character '1' as int 1
 - organize code blocks better
 - delete extra folders
+- chagne upgrades
+- rename monspack5,4
+- differnet scoregain for diff mons tuypse
+- change tower costs
+- make the difficulty level feaasible
 
 CHANGELOG
 ===========
@@ -54,7 +59,10 @@ CHANGELOG
  - 1/12 - added var currentTowerType to always have a tower type to click to create
  - 1/13 - added a point and money system
  - 1/19 - starting the delay class, was not implemented in the future
- - 1/20 - monsPacks() was made such that the level determined the difficulty and monster rate
+ - 1/20 - monsPacks() was made such that the level determined the difficulty and 
+monster rate
+ - 1/21 - added levels
+
 RESOURCES
 ==========
  - https://www.youtube.com/watch?v=Yc8XezH669o
@@ -64,10 +72,5 @@ RESOURCES
 Issues
 =======
  - Need to make instance vars private?
-
-
-Reminders
-========
- - use Driver.java, not anymore because we are using processing
 
 
