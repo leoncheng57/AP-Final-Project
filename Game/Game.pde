@@ -10,7 +10,7 @@ PFont font;
 int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second for some reason
 char currentTowerType = '1';
 int score =0;
-int money= 200;
+int money= 30;//changed from 200
 int towerCost = 10;//for defaultMon
 int level = 1;//to be used to generate monsters propotional to your progress
 Random rnd = new Random();//to be used when generating monsters //ISSUE: this may be unnecessary
@@ -335,7 +335,7 @@ void monsPack5() {
 void monsPacks() {
   int tries = 0;
   //int level;
-  if (rnd.nextInt(10) <= level) {//this could keep changing
+  if (rnd.nextInt(1000) <= level) {//this could keep changing
     if (rnd.nextInt(2) ==0) {
       monsPack5();
     } else {
@@ -343,6 +343,7 @@ void monsPacks() {
     }
     tries ++;
   }
-  level = (score / 1000)+1;
+  level = int(score / 10000)+1;//make a game both hard and doable, and infinite
+  
 }
 
