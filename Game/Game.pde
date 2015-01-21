@@ -49,6 +49,7 @@ void makeGrid() {
 }
 
 void setupMessages() {
+  changeText("Your level: "+level, 0);
   changeText("Your score: "+score, 1);
   changeText("Money left: "+money, 2);
   changeText("Lives left: "+lives, 4);
@@ -73,7 +74,6 @@ void draw() {
   //  if (delayMonsPacks.repeat(2)) {
   //    println("YAY");
   //  }
-  println(lives);
 }
 
 void drawTextBox() {
@@ -121,7 +121,6 @@ void loseLife() {
       passedMons++;
     }
   }
-  println(passedMons);
   lives = 3-passedMons; //3 is the initial num of lives
   changeText("Lives left: "+lives, 4);
 }
@@ -165,7 +164,6 @@ void drawTowers() {
 void checkUpgrade(Tower newT) {
   for (Tower oldT : towers) {
     if (newT.xCor == oldT.xCor && newT.yCor == oldT.yCor) {
-      println("hello");
       changeText("You just upgraded a tower at "+int(newT.xCor/cellSize + .5)+","+int(newT.yCor/cellSize + .5) +"!!", 3);
     }
   }
@@ -218,7 +216,6 @@ void hitMon() {
     for (int i = 0; i<ammos.size (); i++) {
       Ammo a = ammos.get(i); 
       if (abs(a.xCor - m.xCor) < range  && abs(a.yCor - m.yCor) < range) {
-        println("HIT!!");
         fill(#E31010);
         ellipse(a.xCor, a.yCor, 50, 50); //explosion animation
         //rect(a.xCor, a.yCor, range*2, range*2); //allows developers to see the range of the ammo
@@ -352,6 +349,6 @@ void monsPacks() {
     tries ++;
   }
   level = int(score / 1000)+1;//make a game both hard and doable, and infinite
-  changeText(level+"", 0);
+  changeText("Your level: "+level, 0);
 }
 
