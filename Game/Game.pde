@@ -55,20 +55,22 @@ void setupMessages() {
 }
 
 void draw() {
-  background(#012489);
-  drawOutline();
-  drawTowers();
-  makeAmmo();
-  moveAmmo();
-  moveMons();
-  hitMon();
-  graveDigger();
-  loseLife();
-  loseGame();
-  drawTextBox();
-  drawText();
-  monsPacks() ;
-  printData();
+
+    background(#012489);
+    drawOutline();
+    drawTowers();
+    makeAmmo();
+    moveAmmo();
+    moveMons();
+    hitMon();
+    graveDigger();
+    loseLife();
+    loseGame();
+    drawTextBox();
+    drawText();
+    monsPacks() ;
+    printData();
+  
 }
 
 void drawTextBox() {
@@ -124,12 +126,33 @@ void loseLife() {
 //ISSUE: needs fixing
 void loseGame() {
   if (lives <=0) {
-    noLoop();  //ISSUE: losing screen to be put here later on
-    //losing screen
+    noLoop();
     background(0);//sets everyting to black
-    changeText("YOU LOST !!!!!!!!", 4);
+    textAlign(CENTER, CENTER);
+    float midX = width / 2;
+    float midY = height/2;
+    float deltaY = texts[0].fontSize;
+    text("You reached level"+level, midX, midY-(2*deltaY));
+    text("You ONLY had a score of "+score+"...", midX, midY-(1*deltaY));
+    text("Money left: "+money, midX, midY-(0*deltaY));
+    text("You killed "+killCount+" monsters", midX, midY-(-1*deltaY)); 
+    text(":(", midX, midY-(-2*deltaY));
   }
 }
+
+//boolean gameStarted = false;
+//
+//boolean startGame() {
+//  if (gameStarted ==false) {
+//    //  noLoop();
+//    text("Click me to start! ", width/2, height/2);
+//    if (mousePressed) {
+//      loop();
+//      gameStarted = true;
+//    }
+//  }
+//  return gameStarted;
+//}
 
 /*--------------------------------------------------------------*/
 /*------------------------TOWERS--------------------------------*/
@@ -281,11 +304,11 @@ void monsPack2() {
   tk.drawMe();
   mons.add(tk);
 }
- 
+
 void monsPack3() {
-   Swift sw = new Swift();
-   sw.drawMe();
-   mons.add(sw); 
+  Swift sw = new Swift();
+  sw.drawMe();
+  mons.add(sw);
 }
 
 void monsPacks() {

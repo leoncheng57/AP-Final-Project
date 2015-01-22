@@ -8,7 +8,7 @@ class Text {
     msg = s;
     fontSize = 16;
     xCor = 0;
-    yCor = cellSize*numCellsCol + 16 + (16*line);
+    yCor = cellSize*numCellsCol + fontSize + (fontSize*line);
     col = 255;
   }
 
