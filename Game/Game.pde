@@ -12,10 +12,9 @@ int score =0;
 int money= 50;
 int towerCost = 10;//for defaultMon
 int lives = 3;
-int level = 1;//to be used to generate monsters propotional to your progress //ISSUE: may not be neccesary
+int level = 1;//to be used to generate monsters propotional to your progress
 int killCount = 0;
-Random rnd = new Random();//to be used when generating monsters //ISSUE: this may be unnecessary
-//Delay delayMonsPacks=new Delay(1000);
+Random rnd = new Random();//to be used when generating monsters
 
 
 Cell[][] grid = new Cell[numCellsRow][numCellsCol];
@@ -69,7 +68,7 @@ void draw() {
   drawTextBox();
   drawText();
   monsPacks() ;
-  //printData();
+  printData();
 }
 
 void drawTextBox() {
@@ -104,10 +103,11 @@ void drawOutline() {
 //ISSUE: this method doesn't have a great purpose
 void printData() {
   if (frameCount % 60 == 0) {
-    for (int i=0; i<mons.size (); i++) {
-      println(mons.get(i));
+    for (Mon m : mons) {
+      print(m);
     }
   }
+  println();
 }
 
 void loseLife() {

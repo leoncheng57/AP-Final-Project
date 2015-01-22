@@ -1,6 +1,6 @@
 class Tank extends Mon {
 
-  Tank() { //create a default monster
+  Tank() {
     Random rnd = new Random();
     xCor = width;
     yCor = (rnd.nextInt(numCellsCol) * cellSize) + (cellSize / 2);

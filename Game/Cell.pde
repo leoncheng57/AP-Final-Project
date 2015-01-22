@@ -1,8 +1,5 @@
 class Cell{
   int col, row;
-  //below 2 lines may be incorporated later
-  //boolean isPath = false;
-  //Tower occcupant = null;
   
   Cell(int a, int b){
     col = a;

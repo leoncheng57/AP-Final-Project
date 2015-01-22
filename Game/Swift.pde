@@ -1,6 +1,6 @@
 class Swift extends Mon {
 
-  Swift() { //create a default monster
+  Swift() { 
     Random rnd = new Random();
     xCor = width;
     yCor = (rnd.nextInt(numCellsCol) * cellSize) + (cellSize / 2);

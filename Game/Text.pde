@@ -4,7 +4,7 @@ class Text {
   color col;
   float xCor, yCor;
 
-  Text(String s, int line) { //the text type will correspond to its index in the array texts, and the line in the textBox that it will be shown in
+  Text(String s, int line) { //the line will correspond to its index in the array texts, and the line in the textBox that it will be shown in
     msg = s;
     fontSize = 16;
     xCor = 0;
