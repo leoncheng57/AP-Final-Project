@@ -127,7 +127,10 @@ void loseLife() {
 
 void loseGame() {
   if (lives <=0) {
-    noLoop();  //ISSUE: lose screen to be put here later on
+    noLoop();  //ISSUE: losing screen to be put here later on
+    //losing screen
+    background(0);//sets everyting to black
+    changeText("YOU LOST !!!!!!!!", 4);
   }
 }
 
@@ -262,6 +265,9 @@ void keyPressed() {
   if (key=='x') {
     monsPack5();
   }
+  if (key=='c') {
+    monsPack6();
+  }
   if (key =='1' || key == '2') {
     currentTowerType = key;
   }
@@ -337,7 +343,12 @@ void monsPack5() {
   tk.drawMe();
   mons.add(tk);
 }
-
+ 
+void monsPack6() {
+   Swift sw = new Swift();
+   sw.drawMe();
+   mons.add(sw); 
+}
 void monsPacks() {
   int tries = 0;
   if (rnd.nextInt(500) <= level) {//this could keep changing, since level changes
@@ -345,6 +356,7 @@ void monsPacks() {
       monsPack5();
     } else {
       monsPack4() ;
+      monsPack6();
     }
     tries ++;
   }
