@@ -19,12 +19,15 @@ class Tower {
     col = #31A512;
     type = "defaultTower";
     cost = 10;
+    upgradeCount=0;
   }
-
 
   void drawMe() {
     fill(col);
     rect(xCor, yCor, cellSize, cellSize);
+    fill(0);
+    textAlign(CENTER,CENTER);
+    text("UP#: "+upgradeCount, xCor, yCor); //ISSUE: wish we had a better name for this
   }
 
   Ammo createAmmo() { //specific to every tower type

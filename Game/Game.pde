@@ -11,7 +11,8 @@ char currentTowerType = 'z';
 int score =0;
 int money= 50;
 int towerCost = 10;//for defaultMon
-int lives = 3;
+int initialNumOfLives=3;
+int lives = initialNumOfLives;
 int level = 1;//to be used to generate monsters propotional to your progress
 int killCount = 0;
 Random rnd = new Random();//to be used when generating monsters
@@ -55,22 +56,21 @@ void setupMessages() {
 }
 
 void draw() {
-
-    background(#012489);
-    drawOutline();
-    drawTowers();
-    makeAmmo();
-    moveAmmo();
-    moveMons();
-    hitMon();
-    graveDigger();
-    loseLife();
-    loseGame();
-    drawTextBox();
-    drawText();
-    monsPacks() ;
-    printData();
-  
+  background(#012489);
+  drawOutline();
+  drawTowers();
+  upgradeTowers();
+  makeAmmo();
+  moveAmmo();
+  moveMons();
+  hitMon();
+  graveDigger();
+  loseLife();
+  loseGame();
+  drawTextBox();
+  drawText();
+  monsPacks() ;
+  printData();
 }
 
 void drawTextBox() {
@@ -119,11 +119,10 @@ void loseLife() {
       passedMons++;
     }
   }
-  lives = 3-passedMons; //3 is the initial num of lives
+  lives = initialNumOfLives-passedMons; 
   changeText("Lives left: "+lives, 4);
 }
 
-//ISSUE: needs fixing
 void loseGame() {
   if (lives <=0) {
     noLoop();
@@ -191,6 +190,20 @@ void checkUpgrade(Tower newT) {
     }
   }
 }
+
+void upgradeTowers() {
+  for (Tower thisTower : towers) {
+    int count = 0;
+    for (Tower otherTower : towers) {
+      if (thisTower.xCor==otherTower.xCor && thisTower.yCor==otherTower.yCor) {
+        count++;
+      }
+    }
+    thisTower.upgradeCount=count;
+  }
+}
+
+
 
 boolean canDrawTower() {
   //x and y coors of the corner of a Cell box
