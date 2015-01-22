@@ -10,23 +10,16 @@ Kevin Mejia  <br />
 
 Ideas
 =====
-- Add more mon and tower types
-- IDEA: add a fast forward thingy by increasing the frameRate
-- IDEA: somehow, manually make our own shapes that can change color like rect or ellipse but look like towers, mons, missiles
 - Make a start screen
 - Make a lose screen
-- Make lives (ex. 3 lives)
 - diff towers have diff colors
 - upgrades to towers!
 - make instructions
-- codeReview: 11-better to represent the character '1' as int 1
-- organize code blocks better
 - delete extra folders
-- chagne upgrades
-- rename monspack5,4
+- notify upgradse
 - differnet scoregain for diff mons tuypse
 - change tower costs
-- make the difficulty level feaasible
+- make the difficulty level feaasible and fun
 
 CHANGELOG
 ===========
