@@ -7,8 +7,7 @@ int numCellsCol = 5;
 int numCellsRow = 6;
 int cellSize = 100;
 PFont font;
-int initFrameRate = (int)frameRate; //ISSUE: this doesn't represent one second for some reason
-char currentTowerType = '1';
+char currentTowerType = 'z';
 int score =0;
 int money= 50;
 int towerCost = 10;//for defaultMon
@@ -69,11 +68,8 @@ void draw() {
   loseGame();
   drawTextBox();
   drawText();
-  monsPacks() ;///ISSUE ... needs control
+  monsPacks() ;
   //printData();
-  //  if (delayMonsPacks.repeat(2)) {
-  //    println("YAY");
-  //  }
 }
 
 void drawTextBox() {
@@ -125,6 +121,7 @@ void loseLife() {
   changeText("Lives left: "+lives, 4);
 }
 
+//ISSUE: needs fixing
 void loseGame() {
   if (lives <=0) {
     noLoop();  //ISSUE: losing screen to be put here later on
@@ -141,13 +138,13 @@ void loseGame() {
 //makes a specfic tower, press a key to specify the type
 void mousePressed() {
   if (canDrawTower()) {
-    if (currentTowerType == '1') {
+    if (currentTowerType == 'z') {
       Tower tmp = new Tower() ;
       checkUpgrade(tmp);
       towerCost = tmp.cost;
       towers.add(tmp);
     }
-    if (currentTowerType == '2') {
+    if (currentTowerType == 'x') {
       Cannon tmp = new Cannon();
       checkUpgrade(tmp);
       towerCost = tmp.cost;
@@ -259,108 +256,50 @@ void moveMons() {
 /*--------------------------------------------------------------*/
 
 void keyPressed() {
-  if (key=='z') {
-    monsPack4();
+  if (key=='1') {
+    monsPack1();
   }  
-  if (key=='x') {
-    monsPack5();
+  if (key=='2') {
+    monsPack2();
   }
-  if (key=='c') {
-    monsPack6();
+  if (key=='3') {
+    monsPack3();
   }
-  if (key =='1' || key == '2') {
+  if (key =='z' || key == 'x') {
     currentTowerType = key;
   }
 }
 
-void monsPack1() { 
-  if (2*initFrameRate == frameCount) { //ISSUE: good idea to use initFrameRate?
-    Mon m1 = new Mon();
-    m1.drawMe();
-    mons.add(m1);
-  }
-}
-
-
-//ISSUE: needs fixing
-void monsPack2() {
-  float delay =  0.5;
-  float releaseTime = 1;
-  if (3*initFrameRate == frameCount) {
-    Mon m1 = new Mon();
-    m1.drawMe();
-    mons.add(m1);
-  } 
-  if (5*initFrameRate == frameCount) {
-    Mon m1 = new Mon();
-    m1.drawMe();
-    mons.add(m1);
-  } 
-  if (8*initFrameRate == frameCount) {
-    Mon m1 = new Mon();
-    m1.drawMe();
-    mons.add(m1);
-  } 
-
-
-
-  /*  
-   for (int i=0; i<5; i++) {
-   if (releaseTime == frameCount) {
-   Mon m = new Mon();
-   m.drawMe();
-   mons.add(m);
-   println(releaseTime);
-   }
-   releaseTime+=delay;
-   //    println("frameC: "+frameCount);      
-   }
-   println(frameCount);
-   */
-
-  //Began working on a way to prevent overlapping of mons
-  //  for(Mon m : mons) {
-  //   if (m.yCo 
-  //  }
-}
-
-void monsPack3() {
-  if (2*initFrameRate == frameCount) {
-    Tank tk = new Tank();
-    tk.drawMe();
-    mons.add(tk);
-  }
-}
-
-void monsPack4() {
+void monsPack1() {
   Mon m = new Mon();
   m.drawMe();
   mons.add(m);
 }
 
-void monsPack5() { 
+void monsPack2() { 
   Tank tk = new Tank();
   tk.drawMe();
   mons.add(tk);
 }
  
-void monsPack6() {
+void monsPack3() {
    Swift sw = new Swift();
    sw.drawMe();
    mons.add(sw); 
 }
+
 void monsPacks() {
   int tries = 0;
-  if (rnd.nextInt(500) <= level) {//this could keep changing, since level changes
+  if (rnd.nextInt(500) <= level) {//as level increases, the chances of releasing a mon increase
     if (rnd.nextInt(2) ==0) {
-      monsPack5();
+      monsPack2();
     } else {
-      monsPack4() ;
-      monsPack6();
+      monsPack1(); //ISSUE: change how this is deployed
+      monsPack3();
     }
     tries ++;
   }
-  level = int(score / 1000)+1;//make a game both hard and doable, and infinite
+  level = int(score / 1000)+1; 
   changeText("Your level: "+level, 0);
 }
 
