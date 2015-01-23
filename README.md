@@ -9,29 +9,29 @@ Pd 1  <br />
 Leon Cheng  <br />
 Kevin Mejia  <br />
 
-<h1>
+<h5>
 Welcome to Boxes Vs. Circles! Create boxes of defense and defeat the ever-invading circles of doom!
-</h1>
+</h5>
 
 INSTRUCTIONS
 =====================
-click to make a tower
-Upgrade by clicking again
-monsters will increase in number and appear at random according to your level 
-UP# is the number of upgrades applied to that tower
-keyboard functions
+- click to make a tower
+- Upgrade by clicking again
+- monsters will increase in number and appear at random according to your level 
+- UP# is the number of upgrades applied to that tower
+- keyboard functions
 ------------------
-z - default tower
-x - cannon tower (stronger and slower missiles)
+- z - default tower
+- x - cannon tower (stronger and slower missiles)
 
 Cheats/Sandbox Mode
 -------------------
-1 - release a default monster
-2 - release a tank (stronger and slower)
-3 - release a swift (weaker and faster)
-b - increase score by 100
-n - plus one up life
-m - increase money by 100
+- 1 - release a default monster
+- 2 - release a tank (stronger and slower)
+- 3 - release a swift (weaker and faster)
+- b - increase score by 100
+- n - plus one up life
+- m - increase money by 100
 
 CHANGELOG
 ===========
