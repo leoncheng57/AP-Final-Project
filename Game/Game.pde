@@ -63,12 +63,12 @@ void draw() {
   moveMons();
   hitMon();
   graveDigger();
-  loseLife();
-  loseGame();
   drawTextBox();
   drawText();
   monsPacks() ;
   printData();
+  loseLife();
+  loseGame();
 }
 
 void drawTextBox() {
