@@ -7,10 +7,10 @@ int numCellsCol = 5;
 int numCellsRow = 6;
 int cellSize = 100;
 PFont font;
-char currentTowerType = 'z';
+char currentTowerType = 'z'; //start with default tower
 int score =0;
 int money= 50;
-int towerCost = 10;//for defaultMon
+int towerCost = 10;
 int initialNumOfLives=3;
 int lives = initialNumOfLives;
 int level = 1;//to be used to generate monsters propotional to your progress
@@ -35,9 +35,6 @@ void setup() {
 
 void makeFont() {
   font = createFont("Arial", 16);
-  //  see the fonts already installed onto the system
-  //  String[] fontList = PFont.list();
-  //  println(fontList);
 }
 
 void makeGrid() {
@@ -295,9 +292,9 @@ void keyPressed() {
   if (key =='z' || key == 'x') {
     currentTowerType = key;
   }
-  if (key=='b'){
+  if (key=='b') {
     score = score+100;
-    changeText("Your score: "+score,1);
+    changeText("Your score: "+score, 1);
     didCheat = "...but YOU are a CHEATER";
   }
   if (key =='m') {

@@ -29,9 +29,11 @@ class Ammo {
     xCor += speed;
     drawMe();
   }
+  
   void upgradeMe() {
-for(int i=0;i<upgradeCount;i++) {
+    for (int i=0; i<upgradeCount; i++) {
       atk = atk * 2;
     }
   }
 }
+
