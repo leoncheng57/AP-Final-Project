@@ -54,7 +54,7 @@ CHANGELOG
  - 1/19 - starting the delay class, was not implemented in the future
  - 1/20 - monsPacks() was made such that the level determined the difficulty and monster rate
  - 1/21 - cleanup of monster generation , lives implemented, new monster "Swift" created,added levels
-
+ - 1/21 - cosmetic changes such as an indicator of updates. Sandbox features were included
 
 RESOURCES
 ==========
