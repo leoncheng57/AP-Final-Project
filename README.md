@@ -4,9 +4,9 @@ Pd 1  <br />
 Leon Cheng  <br />
 Kevin Mejia  <br />
 
-<h3>
+>-<h3>
 Welcome to Boxes Vs. Circles! Create boxes of defense and defeat the ever-invading circles of doom!
-</h3>
+</h3><-
 
 INSTRUCTIONS
 =====================
@@ -15,7 +15,7 @@ INSTRUCTIONS
 - monsters will increase in number and appear at random according to your level 
 - UP# is the number of upgrades applied to that tower
 
-<p>
+
 Keyboard functions
 ------------------
 - z - default tower
@@ -29,7 +29,7 @@ Cheats/Sandbox Mode
 - b - increase score by 100
 - n - plus one up life
 - m - increase money by 10
-</p>
+
 
 CHANGELOG
 ===========
