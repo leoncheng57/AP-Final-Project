@@ -10,16 +10,8 @@ Kevin Mejia  <br />
 
 Ideas
 =====
-- Make a start screen
-- Make a lose screen
-- diff towers have diff colors
-- upgrades to towers!
 - make instructions
-- delete extra folders
-- notify upgradse
-- differnet scoregain for diff mons tuypse
-- change tower costs
-- make the difficulty level feaasible and fun
+- do differnet scoregain for diff mons tuypse?
 
 CHANGELOG
 ===========
@@ -55,15 +47,5 @@ CHANGELOG
  - 1/20 - monsPacks() was made such that the level determined the difficulty and monster rate
  - 1/21 - cleanup of monster generation , lives implemented, new monster "Swift" created,added levels
  - 1/21 - cosmetic changes such as an indicator of updates. Sandbox features were included
-
-RESOURCES
-==========
- - https://www.youtube.com/watch?v=Yc8XezH669o
- - https://www.processing.org/tutorials/
- - http://www.openprocessing.org/
-
-Issues
-=======
- - Need to make instance vars private?
 
 

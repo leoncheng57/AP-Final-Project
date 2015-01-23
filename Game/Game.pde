@@ -103,14 +103,17 @@ void drawOutline() {
   }
 }
 
-//ISSUE: this method doesn't have a great purpose
 void printData() {
   if (frameCount % 60 == 0) {
     for (Mon m : mons) {
       print(m);
     }
+    println();
+    for (Tower t : towers) {
+      print(t);
+    }
+    println();
   }
-  println();
 }
 
 void loseLife() {
@@ -133,7 +136,7 @@ void loseGame() {
     float midY = height/2;
     float deltaY = texts[0].fontSize;
     text("You reached level"+level, midX, midY-(2*deltaY));
-    text("You ONLY had a score of "+score+"..." + didCheat, midX, midY-(1*deltaY));
+    text("You had a score of "+score+"..." + didCheat, midX, midY-(1*deltaY));
     text("Money left: "+money, midX, midY-(0*deltaY));
     text("You killed "+killCount+" monsters", midX, midY-(-1*deltaY)); 
     text(":(", midX, midY-(-2*deltaY));
@@ -141,19 +144,6 @@ void loseGame() {
   }
 }
 
-//boolean gameStarted = false;
-//
-//boolean startGame() {
-//  if (gameStarted ==false) {
-//    //  noLoop();
-//    text("Click me to start! ", width/2, height/2);
-//    if (mousePressed) {
-//      loop();
-//      gameStarted = true;
-//    }
-//  }
-//  return gameStarted;
-//}
 
 /*--------------------------------------------------------------*/
 /*------------------------TOWERS--------------------------------*/
@@ -269,7 +259,6 @@ void hitMon() {
 void graveDigger() {
   for (int i = 0; i < mons.size (); i++) {
     if (mons.get(i).alive == false) {
-      changeText(mons.get(i).type+" killed!", 0);
       killCount++;
       changeText("Monsters killed: "+killCount, 5);
       mons.remove(i);
@@ -290,7 +279,7 @@ void moveMons() {
 
 
 /*--------------------------------------------------------------*/
-/*------------------------MONSTER PACKS-------------------------*/
+/*--------------MONSTER PACKS and SANDBOX-----------------------*/
 /*--------------------------------------------------------------*/
 
 void keyPressed() {
@@ -305,15 +294,21 @@ void keyPressed() {
   }
   if (key =='z' || key == 'x') {
     currentTowerType = key;
-    
   }
-  if (key =='m') {money = money + 100;
+  if (key=='b'){
+    score = score+100;
+    changeText("Your score: "+score,1);
+    didCheat = "...but YOU are a CHEATER";
+  }
+  if (key =='m') {
+    money = money + 100;
     changeText("Money left: "+money, 2);
     didCheat = "...but YOU are a CHEATER";
   }
-  if (key == 'n') {initialNumOfLives= initialNumOfLives + 1 ;
-  changeText("Lives left: "+lives, 4);
-  didCheat = "...but YOU are a CHEATER";
+  if (key == 'n') {
+    initialNumOfLives= initialNumOfLives + 1 ;
+    changeText("Lives left: "+lives, 4);
+    didCheat = "...but YOU are a CHEATER";
   }
 }
 
@@ -341,7 +336,7 @@ void monsPacks() {
     if (rnd.nextInt(2) ==0) {
       monsPack2();
     } else {
-      monsPack1(); //ISSUE: change how this is deployed
+      monsPack1(); 
       monsPack3();
     }
     tries ++;

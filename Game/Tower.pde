@@ -27,7 +27,7 @@ class Tower {
     rect(xCor, yCor, cellSize, cellSize);
     fill(0);
     textAlign(CENTER,CENTER);
-    text("UP#: "+upgradeCount, xCor, yCor); //ISSUE: wish we had a better name for this
+    text("UP#: "+upgradeCount, xCor, yCor); 
     textAlign(LEFT);
   }
 

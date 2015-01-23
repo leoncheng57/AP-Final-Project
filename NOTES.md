@@ -1,23 +1,8 @@
 Ideas
 =====
-- make instructions
-- delete extra folders
-- delete Delay class
-- notify upgradse!?!??!
-- make the difficulty level feaasible and fun
-- printdata
-- sandbox
- - score
- - money
- - level
 - need the intstance var towerCost?
-
-Unimportant
-============
-- diff towers have diff colors
-- change tower costs
-- differnet scoregain for diff mons tuypse
-
+- address ISSUES
+- includ  in instructions: cost and score of each mon and twoers
 
 instructions draft
 =====================
@@ -30,5 +15,7 @@ monsters will gruadually increase in number and appear at random
 3 - release a swift (weaker and faster)
 z - default tower
 x - cannon tower (stronger and slower missiles)
-m - increase money by 100
+b - increase score by 100
 n - plus one up life
+m - increase money by 100
+UP# is the number of upgrades applied to that tower
