@@ -136,6 +136,7 @@ void loseGame() {
     text("Money left: "+money, midX, midY-(0*deltaY));
     text("You killed "+killCount+" monsters", midX, midY-(-1*deltaY)); 
     text(":(", midX, midY-(-2*deltaY));
+    textAlign(LEFT);
   }
 }
 

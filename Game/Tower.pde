@@ -28,6 +28,7 @@ class Tower {
     fill(0);
     textAlign(CENTER,CENTER);
     text("UP#: "+upgradeCount, xCor, yCor); //ISSUE: wish we had a better name for this
+    textAlign(LEFT);
   }
 
   Ammo createAmmo() { //specific to every tower type
