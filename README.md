@@ -4,9 +4,11 @@ Pd 1  <br />
 Leon Cheng  <br />
 Kevin Mejia  <br />
 
->-<h3>
+<span style="color:red">
+<h3>
 Welcome to Boxes Vs. Circles! Create boxes of defense and defeat the ever-invading circles of doom!
-</h3><-
+</h3>
+</span>
 
 INSTRUCTIONS
 =====================
