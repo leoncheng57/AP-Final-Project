@@ -16,6 +16,7 @@ int lives = initialNumOfLives;
 int level = 1;//to be used to generate monsters propotional to your progress
 int killCount = 0;
 Random rnd = new Random();//to be used when generating monsters
+String didCheat = "";//changes only when sandbox features are used
 
 
 Cell[][] grid = new Cell[numCellsRow][numCellsCol];
@@ -132,7 +133,7 @@ void loseGame() {
     float midY = height/2;
     float deltaY = texts[0].fontSize;
     text("You reached level"+level, midX, midY-(2*deltaY));
-    text("You ONLY had a score of "+score+"...", midX, midY-(1*deltaY));
+    text("You ONLY had a score of "+score+"..." + didCheat, midX, midY-(1*deltaY));
     text("Money left: "+money, midX, midY-(0*deltaY));
     text("You killed "+killCount+" monsters", midX, midY-(-1*deltaY)); 
     text(":(", midX, midY-(-2*deltaY));
@@ -304,6 +305,15 @@ void keyPressed() {
   }
   if (key =='z' || key == 'x') {
     currentTowerType = key;
+    
+  }
+  if (key =='m') {money = money + 100;
+    changeText("Money left: "+money, 2);
+    didCheat = "...but YOU are a CHEATER";
+  }
+  if (key == 'n') {initialNumOfLives= initialNumOfLives + 1 ;
+  changeText("Lives left: "+lives, 4);
+  didCheat = "...but YOU are a CHEATER";
   }
 }
 
