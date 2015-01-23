@@ -9,9 +9,9 @@ Pd 1  <br />
 Leon Cheng  <br />
 Kevin Mejia  <br />
 
-<h5>
+<h3>
 Welcome to Boxes Vs. Circles! Create boxes of defense and defeat the ever-invading circles of doom!
-</h5>
+</h3>
 
 INSTRUCTIONS
 =====================
@@ -19,7 +19,8 @@ INSTRUCTIONS
 - Upgrade by clicking again
 - monsters will increase in number and appear at random according to your level 
 - UP# is the number of upgrades applied to that tower
-- keyboard functions
+
+Keyboard functions
 ------------------
 - z - default tower
 - x - cannon tower (stronger and slower missiles)
