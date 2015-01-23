@@ -1,8 +1,3 @@
-Ideas
-=====
-- include in isntructions: cost and csore of each mon, tower
-
-
 Boxes Vs. Circles
 ================
 Pd 1  <br />
@@ -20,6 +15,7 @@ INSTRUCTIONS
 - monsters will increase in number and appear at random according to your level 
 - UP# is the number of upgrades applied to that tower
 
+<p>
 Keyboard functions
 ------------------
 - z - default tower
@@ -32,7 +28,8 @@ Cheats/Sandbox Mode
 - 3 - release a swift (weaker and faster)
 - b - increase score by 100
 - n - plus one up life
-- m - increase money by 100
+- m - increase money by 10
+</p>
 
 CHANGELOG
 ===========

@@ -132,11 +132,11 @@ void loseGame() {
     float midX = width / 2;
     float midY = height/2;
     float deltaY = texts[0].fontSize;
-    text("You reached level"+level, midX, midY-(2*deltaY));
-    text("You had a score of "+score+"..." + didCheat, midX, midY-(1*deltaY));
+    text("You reached level "+level, midX, midY-(2*deltaY));
+    text("You had a score of "+score, midX, midY-(1*deltaY));
     text("Money left: "+money, midX, midY-(0*deltaY));
     text("You killed "+killCount+" monsters", midX, midY-(-1*deltaY)); 
-    text(":(", midX, midY-(-2*deltaY));
+    text(didCheat, midX, midY-(-2*deltaY));
     textAlign(LEFT);
   }
 }
@@ -298,7 +298,7 @@ void keyPressed() {
     didCheat = "...but YOU are a CHEATER";
   }
   if (key =='m') {
-    money = money + 100;
+    money = money + 10;
     changeText("Money left: "+money, 2);
     didCheat = "...but YOU are a CHEATER";
   }
